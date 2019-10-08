@@ -29,5 +29,12 @@ Create a website that allows users to create memes and share them with others.
 
 ## Initial set of issues/tasks
 - Look up API's that may help https://api.imgflip.com/
-* Proof of concepts
- * Useful if you’re using a library that you want to test before you get too far into your project
+- Set up database for users, templates, and completed memes
+- Set up Authentication
+- Style the website
+- Implement basic meme generation with templates
+- Allow for users to upload images
+- List memes (Search, Filter, Sort)
+
+# Proof of concepts (Useful if you’re using a library that you want to test before you get too far into your project)
+Be able to add text to an image and save it. 
