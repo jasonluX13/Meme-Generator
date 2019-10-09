@@ -21,5 +21,7 @@ namespace MemeGenerator.Data
         public int CreatorId { get; set; }
         public User Creator { get; set; }
         public List<Comment> Comments { get; set; }
+
+
     }
 }
