@@ -29,6 +29,8 @@ Create a website that allows users to create memes and share them with others.
 ## Team member roles and responsibilities
 ### Jason 
 - Create basic webpage layout
+- Set up login and authentication
+
 ### Adam
 - Database setup
 
