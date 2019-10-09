@@ -19,6 +19,7 @@ namespace MemeGenerator
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterType<ITemplateRepository, TemplateRepository>();
 
             DependencyResolver.SetResolver(new Mvc5Resolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new ApiResolver(container);
