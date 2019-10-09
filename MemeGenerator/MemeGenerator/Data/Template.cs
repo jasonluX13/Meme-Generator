@@ -13,5 +13,11 @@ namespace MemeGenerator.Data
         public string Title { get; set; }
         [Required]
         public string Url { get; set; }
+        public List<Coordinates> Coordinates { get; set; }
+
+        public Template()
+        {
+            Coordinates = new List<Coordinates>();
+        }
     }
 }

@@ -155,6 +155,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\Comment.cs" />
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\IMemeRepository.cs" />
+    <Compile Include="Data\Meme.cs" />
+    <Compile Include="Data\MemeRepository.cs" />
+    <Compile Include="Data\Template.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
