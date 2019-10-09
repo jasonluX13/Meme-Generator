@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MemeGenerator.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,12 @@ namespace MemeGenerator.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private ITemplateRepository _templateRepo;
+
+        public HomeController(ITemplateRepository templateRepo)
+        {
+            _templateRepo = templateRepo;
+        }
         // GET: Home
         // List of completed memes
         [AllowAnonymous]
@@ -20,13 +27,19 @@ namespace MemeGenerator.Controllers
         [AllowAnonymous]
         public ActionResult Templates()
         {
-            return View();
+            List<Template> templates = _templateRepo.GetAll();
+            return View(templates);
         }
 
 
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Template template = _templateRepo.GetById((int)id);
+            return View(template);
         }
 
     }

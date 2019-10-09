@@ -1,4 +1,4 @@
-﻿
+﻿@model List<MemeGenerator.Data.Template>
 @{
     ViewBag.Title = "Templates";
 }
@@ -10,6 +10,16 @@
     <link href="~/Content/index.css" rel="stylesheet">
 }
 
-<ul id="list"></ul>
+<ul id="list">
+    @foreach (var template in Model)
+    {
+        <li>
+            <h4>@template.Title</h4>
+            <a href=@Url.Action("Create", "Home", new { id = template.Id })>
+                <img class="meme-img" src=@template.Url />
+            </a>
+        </li>
+    }
+</ul>
 
-<script src="~/Scripts/template.js"></script>
+@*<script src="~/Scripts/template.js"></script>*@
