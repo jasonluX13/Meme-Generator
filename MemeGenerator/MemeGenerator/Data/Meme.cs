@@ -6,12 +6,16 @@ using System.Web;
 
 namespace MemeGenerator.Data
 {
-    public class Template
+    public class Meme
     {
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
         public string Url { get; set; }
+        [Required]
+        public int CreatorId { get; set; }
+        public User Creator { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

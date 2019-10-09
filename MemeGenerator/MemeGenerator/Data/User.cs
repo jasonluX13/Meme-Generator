@@ -9,11 +9,11 @@ namespace MemeGenerator.Data
     public class User
     {
 
-        int Id { get; set; }
+        public int Id { get; set; }
         [Required]
-        string Username { get; set; }
+        public string Username { get; set; }
         [Required]
-        string HashedPassword { get; set; }
+        public string HashedPassword { get; set; }
 
     }
 }
