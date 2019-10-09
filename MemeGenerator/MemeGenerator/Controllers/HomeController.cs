@@ -21,9 +21,11 @@ namespace MemeGenerator.Controllers
             return View();
         }
 
+
         public ActionResult Create()
         {
             return View();
         }
+
     }
 }
