@@ -11,6 +11,7 @@ Create a website that allows users to create memes and share them with others.
 
 ## UI wireframes
  * These can just be hand drawn sketches
+ https://docs.google.com/document/d/1LNuW1v3H5Tk89gs4W3ZVAblBBHxwlVrzRROU7jumTAo/edit?usp=sharing
  
 ## Technology choices
 - ASP.NET MVC 
@@ -36,5 +37,5 @@ Create a website that allows users to create memes and share them with others.
 - Allow for users to upload images
 - List memes (Search, Filter, Sort)
 
-# Proof of concepts (Useful if you’re using a library that you want to test before you get too far into your project)
+## Proof of concepts (Useful if you’re using a library that you want to test before you get too far into your project)
 Be able to add text to an image and save it. 
