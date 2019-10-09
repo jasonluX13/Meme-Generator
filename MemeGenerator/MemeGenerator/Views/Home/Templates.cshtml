@@ -10,13 +10,14 @@
     <link href="~/Content/index.css" rel="stylesheet">
 }
 
+@Html.ActionLink("Create", "Create", "Template", null, new { @class="btn btn-primary"})
 <ul id="list">
     @foreach (var template in Model)
     {
         <li>
             <h4>@template.Title</h4>
             <a href=@Url.Action("Create", "Home", new { id = template.Id })>
-                <img class="meme-img" src=@template.Url />
+                <img class="meme-img" src=@template.Url alt=@template.Title />
             </a>
         </li>
     }

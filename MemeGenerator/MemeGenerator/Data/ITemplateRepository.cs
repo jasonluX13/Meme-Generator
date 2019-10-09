@@ -9,5 +9,6 @@ namespace MemeGenerator.Data
     {
         List<Template> GetAll();
         Template GetById(int id);
+        void Insert(Template template);
     }
 }
