@@ -8,6 +8,10 @@ namespace MemeGenerator.Data
 {
     public class Template
     {
+        public Template()
+        {
+
+        }
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }

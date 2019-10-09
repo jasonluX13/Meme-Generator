@@ -8,6 +8,10 @@ namespace MemeGenerator.Data
 {
     public class Meme
     {
+        public Meme()
+        {
+            Comments = new List<Comment>();
+        }
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }

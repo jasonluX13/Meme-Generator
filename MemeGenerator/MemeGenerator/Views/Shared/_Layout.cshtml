@@ -26,7 +26,22 @@
                         @Html.ActionLink("Templates", "Templates", "Home")
                     </li>
                 </ul>
+                <div class="navbar-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("Logout", "Account", FormMethod.Post))
+                        {
+                            <button class="btn btn-warning">Logout</button>
+                        }
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "btn btn-primary" })
+                    }          
+                   
+                </div>
             </div>
+            
         </div>
     </div>
 
