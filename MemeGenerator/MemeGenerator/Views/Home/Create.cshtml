@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+@section links{
+    <link href="~/Content/Create.css" rel="stylesheet" />
+}
+
+<h2>Create</h2>
+<div>
+    <div>
+        <img id="template" class="meme-img" src="https://i.imgflip.com/1ur9b0.jpg" />
+    </div>
+
+    <div>
+        <form>
+            <input id="textbox1" type="text" />
+            <input id="textbox2" type="text" />
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+@*@Html.BeginForm("Create", "Home", FormMethod.Post){ 
+    
+}*@
