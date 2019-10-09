@@ -6,8 +6,14 @@
 @section links{
     <link href="~/Content/index.css" rel="stylesheet">
 }
-
-<h2>Index</h2>
+@if (Request.IsAuthenticated)
+{
+    <h2>Welcome to MemeGenerator, @User.Identity.Name !</h2>
+}
+else
+{
+    <h2>Welcome to MemeGenerator!</h2>
+}
 
 
 <ul id="list"></ul>

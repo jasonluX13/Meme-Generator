@@ -1,6 +1,10 @@
-using System.Web.Http;
+using System.Web.Mvc;
 using Unity;
-using Unity.WebApi;
+using Unity.Mvc5;
+using Mvc5Resolver = Unity.Mvc5.UnityDependencyResolver;
+using ApiResolver = Unity.WebApi.UnityDependencyResolver;
+using System.Web.Http;
+using MemeGenerator.Data;
 
 namespace MemeGenerator
 {
@@ -14,8 +18,10 @@ namespace MemeGenerator
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
-            UnityConfig.RegisterComponents();                           // <----- Add this line
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            container.RegisterType<IUserRepository, UserRepository>();
+
+            DependencyResolver.SetResolver(new Mvc5Resolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new ApiResolver(container);
         }
     }
 }
