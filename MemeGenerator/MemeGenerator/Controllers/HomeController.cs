@@ -32,9 +32,14 @@ namespace MemeGenerator.Controllers
         }
 
 
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Template template = _templateRepo.GetById((int)id);
+            return View(template);
         }
 
     }

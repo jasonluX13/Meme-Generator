@@ -17,5 +17,16 @@ namespace MemeGenerator.Data
                     .ToList();
             }
         }
+
+        public Template GetById(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Templates
+                    .Include(t => t.Coordinates)
+                    .Where(t => t.Id == id)
+                    .SingleOrDefault();                   
+            }
+        }
     }
 }

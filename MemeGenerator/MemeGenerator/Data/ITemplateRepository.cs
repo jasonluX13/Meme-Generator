@@ -8,5 +8,6 @@ namespace MemeGenerator.Data
     public interface ITemplateRepository
     {
         List<Template> GetAll();
+        Template GetById(int id);
     }
 }
