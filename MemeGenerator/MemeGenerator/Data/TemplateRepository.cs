@@ -28,5 +28,15 @@ namespace MemeGenerator.Data
                     .SingleOrDefault();                   
             }
         }
+
+        public int Insert(Template template)
+        {
+            using (var context = new Context())
+            {
+                context.Templates.Add(template);
+                context.SaveChanges();
+                return template.Id;
+            }
+        }
     }
 }
