@@ -9,5 +9,6 @@ namespace MemeGenerator.Data
     public interface IUserRepository
     {
         User GetByUsername(string username);
+        void Insert(User user);
     }
 }

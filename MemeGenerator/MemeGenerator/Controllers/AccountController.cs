@@ -29,6 +29,7 @@ namespace MemeGenerator.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Login(LoginView viewModel)
         {
@@ -52,6 +53,34 @@ namespace MemeGenerator.Controllers
         {
             //TODO Register user
             return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Register(RegisterView viewModel)
+        {
+            try
+            {
+                if (_userRepo.GetByUsername(viewModel.Username) != null)
+                {
+                    ModelState.AddModelError("", "This username has already been used");
+                    return View(viewModel);
+                }
+                User newUser = new User()
+                {
+                    Username = viewModel.Username,
+                    Email = viewModel.Email,
+                    HashedPassword = BCrypt.Net.BCrypt.HashPassword(viewModel.Password)
+                };
+                _userRepo.Insert(newUser);
+                FormsAuthentication.SetAuthCookie(newUser.Username, false);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+
+            }
+            return View(viewModel);
         }
 
         [HttpPost]

@@ -17,5 +17,14 @@ namespace MemeGenerator.Data
                     .SingleOrDefault();
             }
         }
+
+        public void Insert(User user)
+        {
+            using(var context = new Context())
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
     }
 }
