@@ -40,8 +40,9 @@ namespace MemeGenerator.Controllers
                     Title = viewModel.Title,
                     Url = viewModel.Url
                 };
-                _templateRepo.Insert(newTemplate);
-                return RedirectToAction("Index");
+                int id = _templateRepo.Insert(newTemplate);
+              
+                return RedirectToAction("Create", "Home", new { id = id });
             }
             catch{
 

@@ -29,12 +29,13 @@ namespace MemeGenerator.Data
             }
         }
 
-        public void Insert(Template template)
+        public int Insert(Template template)
         {
             using (var context = new Context())
             {
                 context.Templates.Add(template);
                 context.SaveChanges();
+                return template.Id;
             }
         }
     }
