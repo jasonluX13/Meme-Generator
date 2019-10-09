@@ -20,12 +20,17 @@ Create a website that allows users to create memes and share them with others.
 - API's
 
 ## Architecture/design choices
-
+### Database 
+- Users
+- Templates (img url, coordinates of text boxes)
+- Coordinates
+- CompletedMemes
 
 ## Team member roles and responsibilities
 ### Jason 
-
+- Create basic webpage layout
 ### Adam
+- Database setup
 
 
 ## Initial set of issues/tasks
