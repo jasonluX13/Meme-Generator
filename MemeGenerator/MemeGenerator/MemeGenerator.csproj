@@ -130,6 +130,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Create.css" />
+
     <Content Include="Content\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\template.css" />
@@ -145,6 +147,8 @@
     <Content Include="Scripts\template.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Templates.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
