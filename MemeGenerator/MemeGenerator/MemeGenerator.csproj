@@ -154,6 +154,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\createMeme.js" />
+    <Content Include="Scripts\createTemplate.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -173,8 +174,10 @@
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
+    <Compile Include="Data\ICoordinateRepository.cs" />
     <Compile Include="Data\IMemeRepository.cs" />
     <Compile Include="Data\ITemplateRepository.cs" />
     <Compile Include="Data\IUserRepository.cs" />

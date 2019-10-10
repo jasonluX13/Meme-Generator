@@ -6,7 +6,7 @@ canvas.width = width;
 canvas.crossOrigin = "Anonymous";
 canvas.height = width * img.height / img.width;
 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-ctx.font = "24pt Verdana";
+ctx.font = "20pt Verdana";
 
 const button = document.getElementById('submit');
 
