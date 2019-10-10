@@ -12,10 +12,12 @@ namespace MemeGenerator.Controllers
     public class TemplateController : Controller
     {
         private ITemplateRepository _templateRepo;
+        private ICoordinateRepository _coordRepo;
 
-        public TemplateController(ITemplateRepository templateRepo)
+        public TemplateController(ITemplateRepository templateRepo, ICoordinateRepository coordRepo)
         {
             _templateRepo = templateRepo;
+            _coordRepo = coordRepo;
         }
 
         // GET: Template
@@ -31,7 +33,7 @@ namespace MemeGenerator.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateTemplate viewModel)
+        public ActionResult Create(CreateTemplate viewModel, string[] coords)
         {
             try
             {
@@ -41,7 +43,19 @@ namespace MemeGenerator.Controllers
                     Url = viewModel.Url
                 };
                 int id = _templateRepo.Insert(newTemplate);
-              
+                foreach (var coord in coords)
+                {
+                    var xy = coord.Split(',');
+                    double x = double.Parse(xy[0]);
+                    double y = double.Parse(xy[1]);
+                    Coordinates coordinate = new Coordinates()
+                    {
+                        X = x,
+                        Y = y,
+                        TemplateId = id
+                    };
+                    _coordRepo.Insert(coordinate);                   
+                }
                 return RedirectToAction("Create", "Home", new { id = id });
             }
             catch{
