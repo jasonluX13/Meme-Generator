@@ -18,8 +18,11 @@
     </div>
     <div>
         <form>
-            <input id="textbox1" type="text" />
-            <input id="textbox2" type="text" />
+            @foreach (var coord in Model.Coordinates)
+            {
+                <input class="textbox" type="text" data-X=@coord.X data-Y=@coord.Y />
+            }
+            
             <button id="submit" class="btn btn-primary" type="button">Submit</button>
         </form>
     </div>

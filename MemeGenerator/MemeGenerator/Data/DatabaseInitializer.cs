@@ -49,6 +49,20 @@ namespace MemeGenerator.Data
             context.Templates.Add(template4);
             context.Templates.Add(template5);
 
+            Coordinates coord1 = new Coordinates()
+            {
+                X = 70,
+                Y = 210,
+                Template = template1
+            };
+            Coordinates coord2 = new Coordinates()
+            {
+                X = 300,
+                Y = 200,
+                Template = template1
+            };
+            context.Coordinates.Add(coord1);
+            context.Coordinates.Add(coord2);
             context.SaveChanges();
         }
     }

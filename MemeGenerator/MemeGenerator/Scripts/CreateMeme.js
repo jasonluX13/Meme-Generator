@@ -11,15 +11,17 @@ ctx.font = "24pt Verdana";
 const button = document.getElementById('submit');
 
 button.addEventListener('click', function () {
-    const textbox1 = document.getElementById('textbox1');
-    const textbox2 = document.getElementById('textbox2');
+    const textboxes = document.querySelectorAll('.textbox');
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     //refill text
     ctx.fillStyle = "black";
-
-    ctx.fillText(textbox1.value, 300, 200);
-    ctx.fillText(textbox2.value, 40, 40);
+    textboxes.forEach(t => {
+        let x = parseInt(t.getAttribute('data-X'), 10);
+        let y = parseInt(t.getAttribute('data-Y'), 10);
+        console.log(t.value, x, y);
+        ctx.fillText(t.value, x, y);
+    });
 
 });

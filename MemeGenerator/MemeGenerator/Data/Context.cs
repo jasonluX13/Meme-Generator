@@ -17,6 +17,7 @@ namespace MemeGenerator.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<Meme> Memes { get; set; }
+        public DbSet<Coordinates> Coordinates { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
