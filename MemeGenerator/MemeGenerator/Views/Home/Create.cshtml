@@ -11,17 +11,21 @@
 <h2>@Model.Title</h2>
 <div>
     <div>
-        <img id="template" class="meme-img" src=@Model.Url />
+        <img id="template" style="display: none" class="meme-img" src=@Model.Url />
     </div>
-
+    <div>
+        <canvas id="canvas"></canvas>
+    </div>
     <div>
         <form>
             <input id="textbox1" type="text" />
             <input id="textbox2" type="text" />
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button id="submit" class="btn btn-primary" type="button">Submit</button>
         </form>
     </div>
 </div>
+
+<script src="~/Scripts/createMeme.js"></script>
 
 @*@Html.BeginForm("Create", "Home", FormMethod.Post){ 
     
