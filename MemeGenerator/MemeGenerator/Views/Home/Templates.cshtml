@@ -11,8 +11,14 @@
 }
 
 @Html.ActionLink("Create", "Create", "Template", null, new { @class="btn btn-primary"})
+<div class="form-horizontal">
+
+    <input type="text" name="filter" id="filter" />
+    <button id="Search">Search</button>
+    <button id="Clear">Clear</button>
+</div>
 <ul id="list">
-    @foreach (var template in Model)
+    @*@foreach (var template in Model)
     {
         <li>
             <h4>@template.Title</h4>
@@ -20,7 +26,7 @@
                 <img class="meme-img" src=@template.Url alt=@template.Title />
             </a>
         </li>
-    }
+    }*@
 </ul>
 
-@*<script src="~/Scripts/template.js"></script>*@
+<script src="~/Scripts/template.js"></script>

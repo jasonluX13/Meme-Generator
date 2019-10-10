@@ -19,11 +19,11 @@
     }
 
     async function filterMemes() {
-        let searchCriteria = document.getElementById("filter").value;
+        let searchCriteria = document.getElementById("filter").value.toLowerCase();
         let result = [];
         for(let i=0;i<memeListfull.length;i++){
             
-            if(memeListfull[i].name.includes(searchCriteria)) result.push(memeListfull[i]);
+            if(memeListfull[i].name.toLowerCase().includes(searchCriteria)) result.push(memeListfull[i]);
         }
         memeList = result;
         list.innerHTML = "";
