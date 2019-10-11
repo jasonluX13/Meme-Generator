@@ -11,7 +11,7 @@
     
 
     async function displayMemes(){
-        let imgList = data.map(meme => '<li><img class="meme-img" style="display:none" src="' + meme.Url + '"/><a href="/Meme/Details/' + meme.Id + '"><canvas class="canvas" ></canvas></a></li>');
+        let imgList = data.map(meme => '<li><img class="meme-img" style="display:none" src="' + meme.Url + '"/><h4>'+ meme.Title +'</h4><a href="/Meme/Details/' + meme.Id + '"><canvas class="canvas" ></canvas></a></li>');
         let innerHtml = imgList.join('');
         console.log(innerHtml);
         list.innerHTML = innerHtml;
