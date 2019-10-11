@@ -174,20 +174,23 @@
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Context.cs" />
-    <Compile Include="Data\CoordinateRepository.cs" />
+    <Compile Include="Data\MemeCoordinates.cs" />
+    <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
-    <Compile Include="Data\ICoordinateRepository.cs" />
-    <Compile Include="Data\IMemeRepository.cs" />
-    <Compile Include="Data\ITemplateRepository.cs" />
-    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="Repositories\ICoordinateRepository.cs" />
+    <Compile Include="Repositories\IMemeCoordinateRepository.cs" />
+    <Compile Include="Repositories\IMemeRepository.cs" />
+    <Compile Include="Repositories\ITemplateRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Data\Meme.cs" />
-    <Compile Include="Data\MemeRepository.cs" />
+    <Compile Include="Repositories\MemeCoordinateRepository.cs" />
+    <Compile Include="Repositories\MemeRepository.cs" />
     <Compile Include="Data\MemeResponse.cs" />
     <Compile Include="Data\Template.cs" />
-    <Compile Include="Data\TemplateRepository.cs" />
+    <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Data\User.cs" />
-    <Compile Include="Data\UserRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

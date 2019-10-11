@@ -11,6 +11,7 @@ namespace MemeGenerator.Data
         public Meme()
         {
             Comments = new List<Comment>();
+            MemeCoordinates = new List<MemeCoordinates>();
         }
         public int Id { get; set; }
         [Required]
@@ -21,6 +22,8 @@ namespace MemeGenerator.Data
         public int CreatorId { get; set; }
         public User Creator { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public List<MemeCoordinates> MemeCoordinates { get; set; }
 
 
     }
