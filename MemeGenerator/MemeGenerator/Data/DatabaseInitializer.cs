@@ -63,6 +63,34 @@ namespace MemeGenerator.Data
             };
             context.Coordinates.Add(coord1);
             context.Coordinates.Add(coord2);
+
+            Meme meme1 = new Meme()
+            {
+                Title = template1.Title + " Meme",
+                Creator = user1,
+                Url = template1.Url
+                
+            };
+            context.Memes.Add(meme1);
+
+            MemeCoordinates mCoord1 = new MemeCoordinates()
+            {
+                X = 70,
+                Y = 210,
+                Meme = meme1,
+                Text = "Text"
+                
+            };
+            MemeCoordinates mCoord2 = new MemeCoordinates()
+            {
+                X = 300,
+                Y = 200,
+                Text = "Text",
+                Meme = meme1
+            };
+            context.MemeCoordinates.Add(mCoord1);
+            context.MemeCoordinates.Add(mCoord2);
+
             context.SaveChanges();
         }
     }
