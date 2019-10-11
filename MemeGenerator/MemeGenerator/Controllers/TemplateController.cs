@@ -2,6 +2,7 @@
 using MemeGenerator.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,9 +28,14 @@ namespace MemeGenerator.Controllers
         }
 
         //Create a new template
-        public ActionResult Create()
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult Create(CreateTemplate viewModel)
         {
-            return View();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -62,6 +68,24 @@ namespace MemeGenerator.Controllers
 
             }
             return View(viewModel);
+        }
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            string serverPath = string.Empty;
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Templates"), fileName);
+                file.SaveAs(path);
+                serverPath = $"http://localhost:53520/Templates/{fileName}";
+            }
+            return RedirectToAction("Create", new CreateTemplate() { Url = serverPath });
         }
     }
 }
