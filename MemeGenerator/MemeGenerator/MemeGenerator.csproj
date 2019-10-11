@@ -174,14 +174,17 @@
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\MemeCoordinates.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Repositories\ICoordinateRepository.cs" />
+    <Compile Include="Repositories\IMemeCoordinateRepository.cs" />
     <Compile Include="Repositories\IMemeRepository.cs" />
     <Compile Include="Repositories\ITemplateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Data\Meme.cs" />
+    <Compile Include="Repositories\MemeCoordinateRepository.cs" />
     <Compile Include="Repositories\MemeRepository.cs" />
     <Compile Include="Data\MemeResponse.cs" />
     <Compile Include="Data\Template.cs" />

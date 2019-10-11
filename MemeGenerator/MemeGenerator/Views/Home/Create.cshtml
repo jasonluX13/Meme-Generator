@@ -17,14 +17,15 @@
         <canvas id="canvas"></canvas>
     </div>
     <div>
-        <form>
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+        {
             @foreach (var coord in Model.Coordinates)
             {
-                <input class="textbox" type="text" data-X=@coord.X data-Y=@coord.Y />
+                <input class="textbox" name="text-data" type="text" data-X=@coord.X data-Y=@coord.Y />
             }
-            
-            <button id="submit" class="btn btn-primary" type="button">Submit</button>
-        </form>
+
+            <button id="submit" class="btn btn-primary" type="button">Create Meme</button>
+        }
     </div>
 </div>
 
