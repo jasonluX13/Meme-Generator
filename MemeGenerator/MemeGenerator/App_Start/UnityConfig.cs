@@ -4,6 +4,7 @@ using Unity.Mvc5;
 using Mvc5Resolver = Unity.Mvc5.UnityDependencyResolver;
 using ApiResolver = Unity.WebApi.UnityDependencyResolver;
 using System.Web.Http;
+using MemeGenerator.Repositories;
 using MemeGenerator.Data;
 
 namespace MemeGenerator
@@ -22,6 +23,7 @@ namespace MemeGenerator
             container.RegisterType<ITemplateRepository, TemplateRepository>();
             container.RegisterType<ICoordinateRepository, CoordinateRepository>();
             container.RegisterType<IMemeRepository, MemeRepository>();
+            container.RegisterType<IMemeCoordinateRepository, MemeCoordinateRepository>();
 
             DependencyResolver.SetResolver(new Mvc5Resolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new ApiResolver(container);

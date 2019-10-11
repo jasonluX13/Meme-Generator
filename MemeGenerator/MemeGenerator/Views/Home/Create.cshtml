@@ -17,14 +17,25 @@
         <canvas id="canvas"></canvas>
     </div>
     <div>
+
         @using (Html.BeginForm("Create", "Home", FormMethod.Post))
         {
-            @foreach (var coord in Model.Coordinates)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Coordinates)
+            @Html.HiddenFor(model => model.Url)
+            @Html.HiddenFor(model => model.Id)
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = Model.Title } })
+             
+            </div>
+            foreach (var coord in Model.Coordinates)
             {
-                <input class="textbox" name="text-data" type="text" data-X=@coord.X data-Y=@coord.Y />
+                <input class="textbox" name="textData" type="text" data-X=@coord.X data-Y=@coord.Y />
             }
-
+            
             <button id="submit" class="btn btn-primary" type="button">Create Meme</button>
+            <button class="btn btn-success" type="submit" >Share</button>
         }
     </div>
 </div>
