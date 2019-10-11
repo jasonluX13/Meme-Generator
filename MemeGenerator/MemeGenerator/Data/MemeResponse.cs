@@ -12,12 +12,15 @@ namespace MemeGenerator.Data
         public string Url { get; set; }
         public string CreatorUsername { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<MemeCoordInfo> MemeCoordinates { get; set; }
+         
         public MemeResponse(Meme meme)
         {
             Id = meme.Id;
             Title = meme.Title;
             Url = meme.Url;
             Comments = meme.Comments;
+            MemeCoordinates = meme.MemeCoordinates.Select(m => new MemeCoordInfo { Id = m.Id, Text = m.Text, X = m.X, Y=m.Y}).ToList();
             CreatorUsername = meme.Creator.Username;
         }
     }

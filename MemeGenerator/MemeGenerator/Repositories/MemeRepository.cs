@@ -48,6 +48,7 @@ namespace MemeGenerator.Data
             {
                 var memes = await context.Memes
                     .Include(x => x.Creator)
+                    .Include(x => x.MemeCoordinates)
                     .ToListAsync();
                 List<MemeResponse> memeresponses = new List<MemeResponse>();
                 foreach (var meme in memes)

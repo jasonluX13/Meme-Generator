@@ -165,6 +165,7 @@
     <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ApiMemeController.cs" />
     <Compile Include="ApiControllers\ApiTemplateController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\MemeCoordinates.cs" />
+    <Compile Include="Data\MemeCoordInfo.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
