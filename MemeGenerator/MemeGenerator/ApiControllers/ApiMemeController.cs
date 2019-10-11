@@ -23,5 +23,11 @@ namespace MemeGenerator.ApiControllers
         {
             return await _memeRepo.GetAllMemesAsync();
         }
+
+        [Route("api/memes/meme/{id}")]
+        async public Task<MemeResponse> Post(int id)
+        {
+            return await _memeRepo.GetMemeAsync(id);
+        }
     }
 }
