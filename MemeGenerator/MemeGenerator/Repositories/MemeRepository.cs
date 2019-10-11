@@ -67,6 +67,7 @@ namespace MemeGenerator.Data
                     .Memes
                     .Include(x => x.Comments)
                     .Include(x => x.Creator)
+                    .Include(x => x.MemeCoordinates)
                     .SingleOrDefaultAsync(x => x.Id == id);
 
                 return new MemeResponse(meme);
@@ -101,5 +102,7 @@ namespace MemeGenerator.Data
                 return comment;
             }
         }
+
+        
     }
 }

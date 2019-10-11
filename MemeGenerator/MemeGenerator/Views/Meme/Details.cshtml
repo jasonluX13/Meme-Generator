@@ -1,0 +1,24 @@
+﻿@model MemeGenerator.Data.MemeResponse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
+    <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
+   
+    <img id="image" data-id=@Model.Id src=@Model.Url style="display:none"/>
+    <canvas id="canvas" ></canvas>
+    
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<hr />
+<h4>Comments</h4>
+<hr />
+
+<script src="~/Scripts/details.js"></script>
