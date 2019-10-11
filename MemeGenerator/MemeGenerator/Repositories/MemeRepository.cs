@@ -82,6 +82,15 @@ namespace MemeGenerator.Data
             }
         }
 
+        public int AddMeme(Meme meme)
+        {
+            using (var context = new Context())
+            {
+                context.Memes.Add(meme);
+                context.SaveChanges();
+                return meme.Id;
+            }
+        }
         async public Task<Comment> AddCommentAsync(Comment comment)
         {
             using (var context = new Context())
