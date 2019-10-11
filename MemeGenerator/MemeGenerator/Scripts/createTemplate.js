@@ -41,5 +41,6 @@ function clear() {
     document.getElementById('textboxes').innerHTML = '';
 }
 
+
 document.getElementById('addTextboxes').addEventListener('click', addText);
 document.getElementById('clear').addEventListener('click', clear);
