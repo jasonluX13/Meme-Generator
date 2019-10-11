@@ -122,7 +122,40 @@ namespace MemeGenerator.Data
                 Url = template1.Url
                 
             };
+            Meme meme2 = new Meme()
+            {
+                Title = template2.Title + " Meme",
+                Creator = user1,
+                Url = template2.Url
+
+            };
+            Meme meme3 = new Meme()
+            {
+                Title = template3.Title + " Meme",
+                Creator = user1,
+                Url = template3.Url
+
+            };
+            Meme meme4 = new Meme()
+            {
+                Title = template4.Title + " Meme",
+                Creator = user1,
+                Url = template4.Url
+
+            };
+            Meme meme5 = new Meme()
+            {
+                Title = template5.Title + " Meme",
+                Creator = user1,
+                Url = template5.Url
+            };
+
+
             context.Memes.Add(meme1);
+            context.Memes.Add(meme2);
+            context.Memes.Add(meme3);
+            context.Memes.Add(meme4);
+            context.Memes.Add(meme5);
 
             MemeCoordinates mCoord1 = new MemeCoordinates()
             {
@@ -139,8 +172,70 @@ namespace MemeGenerator.Data
                 Text = "Text",
                 Meme = meme1
             };
+
+            MemeCoordinates mCoord3 = new MemeCoordinates()
+            {
+                X = 233,
+                Y = 58,
+                Text = "top text",
+                Meme = meme2
+            
+            };
+
+            MemeCoordinates mCoord4 = new MemeCoordinates()
+            {
+                X = 237,
+                Y = 242,
+                Text = "bottom text",
+                Meme = meme2
+            };
+
+            MemeCoordinates mCoord5 = new MemeCoordinates()
+            {
+                X = 61,
+                Y = 95,
+                Text = "top text",
+                Meme = meme3
+            };
+            MemeCoordinates mCoord6 = new MemeCoordinates()
+            {
+                X = 198,
+                Y = 69,
+                Text = "bottom text",
+                Meme = meme3
+            };
+
+            MemeCoordinates mCoord7 = new MemeCoordinates()
+            {
+                X = 69,
+                Y = 32,
+                Text = "top text",
+                Meme = meme4
+            };
+            MemeCoordinates mCoord8 = new MemeCoordinates()
+            {
+                X = 77,
+                Y = 230,
+                Text = "bottom text",
+                Meme = meme4
+            };
+            MemeCoordinates mCoord9 = new MemeCoordinates()
+            {
+                X = 185,
+                Y = 209,
+                Text = "text",
+                Meme = meme5
+            };
+
             context.MemeCoordinates.Add(mCoord1);
             context.MemeCoordinates.Add(mCoord2);
+            context.MemeCoordinates.Add(mCoord3);
+            context.MemeCoordinates.Add(mCoord4);
+            context.MemeCoordinates.Add(mCoord5);
+            context.MemeCoordinates.Add(mCoord6);
+            context.MemeCoordinates.Add(mCoord7);
+            context.MemeCoordinates.Add(mCoord8);
+            context.MemeCoordinates.Add(mCoord9);
 
             context.SaveChanges();
         }
