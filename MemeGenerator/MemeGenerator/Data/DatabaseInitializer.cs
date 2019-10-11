@@ -61,8 +61,59 @@ namespace MemeGenerator.Data
                 Y = 200,
                 Template = template1
             };
+            Coordinates coord3 = new Coordinates()
+            {
+                X = 233,
+                Y = 58,
+                Template = template2
+            };
+            Coordinates coord4 = new Coordinates()
+            {
+                X = 237,
+                Y = 242,
+                Template = template2
+            };
+
+            Coordinates coord5 = new Coordinates()
+            {
+                X = 61,
+                Y = 95,
+                Template = template3
+            };
+            Coordinates coord6 = new Coordinates()
+            {
+                X = 198,
+                Y = 69,
+                Template = template3
+            };
+
+            Coordinates coord7 = new Coordinates()
+            {
+                X = 69,
+                Y = 32,
+                Template = template4
+            };
+            Coordinates coord8 = new Coordinates()
+            {
+                X = 77,
+                Y = 230,
+                Template = template4
+            };
+            Coordinates coord9 = new Coordinates()
+            {
+                X = 185,
+                Y = 209,
+                Template = template5
+            };
             context.Coordinates.Add(coord1);
             context.Coordinates.Add(coord2);
+            context.Coordinates.Add(coord3);
+            context.Coordinates.Add(coord4);
+            context.Coordinates.Add(coord5);
+            context.Coordinates.Add(coord6);
+            context.Coordinates.Add(coord7);
+            context.Coordinates.Add(coord8);
+            context.Coordinates.Add(coord9);
 
             Meme meme1 = new Meme()
             {
