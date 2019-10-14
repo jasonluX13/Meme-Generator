@@ -13,32 +13,45 @@
     async function displayMemes(){
         let imgList = data.map(meme => '<li><img class="meme-img" style="display:none" src="' + meme.Url + '"/><h4>'+ meme.Title +'</h4><a href="/Meme/Details/' + meme.Id + '"><canvas class="canvas" ></canvas></a></li>');
         let innerHtml = imgList.join('');
-        console.log(innerHtml);
+        
         list.innerHTML = innerHtml;
+        console.log(list.innerHTML);
+        setTimeout(displayCanvas, 0);
+
+       
+    }
+
+    function displayCanvas(){
+
         let canvases = document.querySelectorAll('.canvas');
         let images = document.querySelectorAll('.meme-img');
 
         for (let i = 1; i < canvases.length; i++){
-            let canvas = canvases[i];
-            let ctx = canvas.getContext('2d');
-            canvas.crossOrigin = "Anonymous";
-            let img = images[i-1];
+            let image = new Image();
+            image.src = data[i-1].Url;
+            image.onload = function () {
+                let canvas = canvases[i];
+                let ctx = canvas.getContext('2d');
+                canvas.crossOrigin = "Anonymous";
+                let img = images[i-1];
 
-            canvas.width = 400;
-            canvas.height = canvas.width * img.height / img.width;
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "black";
-            ctx.font = "20pt Verdana";
+                canvas.width = 400;
+                canvas.height = canvas.width * img.height / img.width;
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "black";
+                ctx.font = "20pt Verdana";
 
-            let textboxes = data[i-1].MemeCoordinates;
-            for (let j = 0; j < textboxes.length; j++){
-                let x = textboxes[j].X;
-                let y = textboxes[j].Y;
-                let text = textboxes[j].Text;
-                ctx.fillText(text, x, y);
-            }
+                let textboxes = data[i-1].MemeCoordinates;
+                for (let j = 0; j < textboxes.length; j++){
+                    let x = textboxes[j].X;
+                    let y = textboxes[j].Y;
+                    let text = textboxes[j].Text;
+                    ctx.fillText(text, x, y);
+                }
+            };
+            
         }
-    }
+    } 
 
     async function filterMemes() {
         let searchCriteria = document.getElementById("filter").value.toLowerCase();

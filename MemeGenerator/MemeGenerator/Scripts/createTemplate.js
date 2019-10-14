@@ -8,15 +8,19 @@ ctx.fillStyle = "black";
 function addText() {
     let src = document.getElementById('url').value;
     document.getElementById('image').innerHTML = '<img id="img" style="display: none" class="meme-img" src="' + src + '" />';
-    let img = document.querySelector('#img');
+    //let img = document.querySelector('#img');
+    let img = new Image();
+    img.src = src;
+    img.onload = function () {
+        canvas.width = width;
+        canvas.height = width * img.height / img.width;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    canvas.width = width;
-    canvas.height = width * img.height / img.width;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        document.getElementById('clear').style.display = '';
+        canvas.removeEventListener('mousedown', getCursorPosition);
+        canvas.addEventListener('mousedown', getCursorPosition);
+    };
    
-    document.getElementById('clear').style.display = '';
-    canvas.removeEventListener('mousedown', getCursorPosition);
-    canvas.addEventListener('mousedown', getCursorPosition);
 }
 
 
