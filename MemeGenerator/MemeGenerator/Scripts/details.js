@@ -1,15 +1,4 @@
 ﻿(async () => {
-    const img = document.getElementById('image');
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    canvas.crossOrigin = "Anonymous";
-    canvas.width = 400;
-    canvas.height = canvas.width * img.height / img.width;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "black";
-    ctx.font = "20pt Verdana";
-
     function wrapText(context, text, x, y, maxWidth, lineHeight) {
         var words = text.split(' ');
         var line = '';
@@ -29,8 +18,25 @@
         }
         context.fillText(line, x, y);
     }
+    const image = document.getElementById('image');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-    let url = "http://localhost:53520/api/memes/meme/" + img.getAttribute('data-id');
+    const img = new Image();
+    img.src = image.src;
+    img.onload = function(){
+        canvas.crossOrigin = "Anonymous";
+        canvas.width = 400;
+        canvas.height = canvas.width * img.height / img.width;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+        ctx.font = "20pt Verdana";
+    };
+    
+
+    
+
+    let url = "http://localhost:53520/api/memes/meme/" + image.getAttribute('data-id');
     console.log(url);
 
     let response = await fetch(url, {
