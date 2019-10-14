@@ -20,6 +20,25 @@
 
        
     }
+    function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for (var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = context.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                context.fillText(line, x, y);
+                line = words[n] + ' ';
+                y += lineHeight;
+            }
+            else {
+                line = testLine;
+            }
+        }
+        context.fillText(line, x, y);
+    }
 
     function displayCanvas(){
 
@@ -46,7 +65,8 @@
                     let x = textboxes[j].X;
                     let y = textboxes[j].Y;
                     let text = textboxes[j].Text;
-                    ctx.fillText(text, x, y);
+                    //ctx.fillText(text, x, y);
+                    wrapText(ctx, text, x, y, 100, 20);
                 }
             };
             
