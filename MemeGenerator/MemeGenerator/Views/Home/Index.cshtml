@@ -8,7 +8,14 @@
 }
 @if (Request.IsAuthenticated)
 {
-    <h2>Welcome to MemeGenerator, @User.Identity.Name !</h2>
+    if (((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator"))
+    {
+        <h2>Welcome to MemeGenerator, Moderator @User.Identity.Name !</h2>
+    }
+    else
+    {
+        <h2>Welcome to MemeGenerator, @User.Identity.Name !</h2>
+    }
 }
 else
 {

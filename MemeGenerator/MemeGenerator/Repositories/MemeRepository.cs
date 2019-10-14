@@ -102,6 +102,15 @@ namespace MemeGenerator.Data
                 return comment;
             }
         }
+        async public void RemoveCommentAsync(Comment comment)
+        {
+            using (var context = new Context())
+            {
+                context.Comments.Attach(comment);
+                context.Entry(comment).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+        }
 
         public int Count()
         {

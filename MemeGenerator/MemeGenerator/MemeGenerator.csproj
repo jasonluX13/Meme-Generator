@@ -179,6 +179,7 @@
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\MemeCoordinates.cs" />
     <Compile Include="Data\MemeCoordInfo.cs" />
+    <Compile Include="Data\UserRole.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
@@ -199,6 +200,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\CustomIdentity.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="ViewModels\CreateMeme.cs" />
     <Compile Include="ViewModels\CreateTemplate.cs" />
     <Compile Include="ViewModels\LoginView.cs" />
