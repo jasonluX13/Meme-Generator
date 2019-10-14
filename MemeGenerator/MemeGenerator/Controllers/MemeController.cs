@@ -67,12 +67,14 @@ namespace MemeGenerator.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Random()
+        async public Task<ActionResult> Random()
         {
             int total = _memeRepo.Count();
             Random r = new Random();
             int offset = r.Next(1, total);
-            return RedirectToAction("Details", new { id = offset });
+            MemeResponse meme = await _memeRepo.GetMemeAsync(offset);
+            //return RedirectToAction("Details", new { id = offset });
+            return View(meme);
         }
 
     }
