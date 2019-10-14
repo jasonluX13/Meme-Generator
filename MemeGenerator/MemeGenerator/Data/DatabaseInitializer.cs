@@ -247,6 +247,13 @@ namespace MemeGenerator.Data
             };
 
             context.Comments.Add(com1);
+            UserRole user1Role = new UserRole()
+            {
+                RoleName = "Moderator",
+                User = user1
+            };
+
+            context.UserRoles.Add(user1Role);
 
             context.SaveChanges();
         }
