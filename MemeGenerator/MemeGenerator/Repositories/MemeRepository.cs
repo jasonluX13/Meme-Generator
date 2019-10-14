@@ -70,6 +70,10 @@ namespace MemeGenerator.Data
                     .Include(x => x.MemeCoordinates)
                     .SingleOrDefaultAsync(x => x.Id == id);
 
+                var comments = await context.Comments.Include(x => x.Creator).ToListAsync();
+
+                meme.Comments = comments; 
+
                 return new MemeResponse(meme);
             }
         }
