@@ -39,7 +39,7 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Creator.Username)</td>
                 <td>@Html.DisplayFor(modelItem => item.Text)</td>
-                @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator"))
+                @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator") && item.Text != "[Removed]")
                 {
                     <td>@Html.ActionLink("Remove Comment", "Remove", "Meme", new { id = item.Id }, new { @class = "btn btn-warning" })</td>
                 }
