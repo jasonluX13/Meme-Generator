@@ -103,6 +103,14 @@ namespace MemeGenerator.Data
             }
         }
 
+        public int Count()
+        {
+            using (var context = new Context())
+            {
+                return context.Memes.Count();
+            }
+        }
+
         
     }
 }
