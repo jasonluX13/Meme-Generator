@@ -237,6 +237,17 @@ namespace MemeGenerator.Data
             context.MemeCoordinates.Add(mCoord8);
             context.MemeCoordinates.Add(mCoord9);
 
+            Comment com1 = new Comment()
+            {
+                Creator = user1,
+                CreatorId = 1,
+                MemeId = 1,
+                Meme = meme1,
+                Text = "Sample text",
+            };
+
+            context.Comments.Add(com1);
+
             context.SaveChanges();
         }
     }
