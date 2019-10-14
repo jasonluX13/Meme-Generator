@@ -21,6 +21,7 @@ namespace MemeGenerator.Data
         public string HashedPassword { get; set; }
 
         public List<Meme> Memes { get; set; }
+        public List<UserRole> Roles { get; set; }
 
     }
 }
