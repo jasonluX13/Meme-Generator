@@ -26,6 +26,7 @@ namespace MemeGenerator.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         async public Task<ActionResult> Details(int? id)
         {
             if (!id.HasValue)
@@ -63,6 +64,15 @@ namespace MemeGenerator.Controllers
                 return RedirectToAction("Details", new { id = id });
             }
             return View("Comment");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Random()
+        {
+            int total = _memeRepo.Count();
+            Random r = new Random();
+            int offset = r.Next(1, total);
+            return RedirectToAction("Details", new { id = offset });
         }
 
     }
