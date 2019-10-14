@@ -77,5 +77,34 @@ namespace MemeGenerator.Controllers
             return View(meme);
         }
 
+        async public Task<ActionResult> Remove(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Comment comment = await _memeRepo.GetCommentById((int)id);
+            if (comment == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(comment);
+        }
+
+        [ValidateAntiForgeryToken, HttpPost]
+        async public Task<ActionResult> Remove(Comment comment)
+        {
+            try
+            {
+                comment.Text = "[Removed]";
+                _memeRepo.RemoveCommentAsync(comment);
+                return RedirectToAction("Details", new { id = comment.MemeId });
+            }
+            catch
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

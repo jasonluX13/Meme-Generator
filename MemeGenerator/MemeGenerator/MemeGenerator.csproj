@@ -224,6 +224,7 @@
     <Content Include="Views\Meme\Details.cshtml" />
     <Content Include="Views\Meme\Comment.cshtml" />
     <Content Include="Views\Meme\Random.cshtml" />
+    <Content Include="Views\Meme\Remove.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
