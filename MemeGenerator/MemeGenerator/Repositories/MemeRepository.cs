@@ -70,7 +70,7 @@ namespace MemeGenerator.Data
                     .Include(x => x.MemeCoordinates)
                     .SingleOrDefaultAsync(x => x.Id == id);
 
-                var comments = await context.Comments.Include(x => x.Creator).ToListAsync();
+                var comments = await context.Comments.Include(x => x.Creator).Where(x => id == x.MemeId).ToListAsync();
 
                 meme.Comments = comments; 
 
