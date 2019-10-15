@@ -248,6 +248,15 @@ namespace MemeGenerator.Data
 
             context.Comments.Add(com1);
 
+            Vote vote1 = new Vote()
+            {
+                MemeId = 1,
+                UserId = 1,
+                UpDown = true
+            };
+
+            context.Votes.Add(vote1);
+
             context.SaveChanges();
         }
     }

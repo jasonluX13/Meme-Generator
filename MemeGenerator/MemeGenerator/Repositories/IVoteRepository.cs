@@ -10,5 +10,6 @@ namespace MemeGenerator.Repositories
     {
         void AddVote(Vote vote);
         Vote GetUserVoteOnMeme(int memeId, int userId);
+        List<Vote> GetAllVotesOnMeme(int memeId);
     }
 }
