@@ -34,10 +34,11 @@ namespace MemeGenerator.ApiControllers
             return _repository.GetUserVoteOnMeme(memeId, userId);
         }
 
-        [Route("api/votes/{memeId}/add/{updown}"), HttpPatch]
-        public Vote CastUserVote(int memeId, bool updown)
+        [Route("api/votes/{memeId}/add/{updown}"), HttpPut]
+        public void CastUserVote(int memeId, bool updown)
         {
-            if (!User.Identity.IsAuthenticated) return null;
+
+            if (!User.Identity.IsAuthenticated) return;
             Vote vote = new Vote()
             {
                 UserId = _userRepository.GetByUsername(User.Identity.Name).Id,
@@ -45,10 +46,7 @@ namespace MemeGenerator.ApiControllers
                 UpDown = updown
             };
             _repository.AddVote(vote);
-            return vote;
         }
-
-
 
     }
 }

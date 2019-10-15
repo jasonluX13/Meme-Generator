@@ -18,7 +18,16 @@ namespace MemeGenerator.Repositories
                 if(oldVote != null)
                 {
                     if (oldVote.UpDown == vote.UpDown) return;
-                    else context.Votes.Remove(oldVote);
+                    else
+                    {
+                        Vote votetodelete = new Vote()
+                        {
+                            Id = oldVote.Id
+                        };
+                        context.Entry(votetodelete).State = System.Data.Entity.EntityState.Deleted;
+                        context.Votes.Add(vote);
+                    }
+
                 }
                 else context.Votes.Add(vote);
                 await context.SaveChangesAsync();
