@@ -268,8 +268,19 @@ namespace MemeGenerator.Data
                 RoleName = "Moderator",
                 User = user1
             };
-
+            UserRole user1Role1 = new UserRole()
+            {
+                RoleName = "Admin",
+                User = user1
+            };
+            UserRole user2Role2 = new UserRole()
+            {
+                RoleName = "Moderator",
+                User = user2
+            };
             context.UserRoles.Add(user1Role);
+            context.UserRoles.Add(user1Role1);
+            context.UserRoles.Add(user2Role2);
 
             context.SaveChanges();
         }

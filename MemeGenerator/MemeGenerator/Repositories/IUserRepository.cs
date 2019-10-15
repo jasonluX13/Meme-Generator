@@ -15,5 +15,6 @@ namespace MemeGenerator.Data
         List<User> GetNormalUsers();
 
         void AddRole(UserRole role);
+        void RemoveRole(UserRole role);
     }
 }

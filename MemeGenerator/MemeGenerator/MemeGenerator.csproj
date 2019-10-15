@@ -230,6 +230,7 @@
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Moderator\Add.cshtml" />
     <Content Include="Views\Moderator\Select.cshtml" />
+    <Content Include="Views\Moderator\Remove.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
