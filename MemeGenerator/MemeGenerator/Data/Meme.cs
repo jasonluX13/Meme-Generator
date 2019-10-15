@@ -22,6 +22,7 @@ namespace MemeGenerator.Data
         public int CreatorId { get; set; }
         public User Creator { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<Vote> Votes { get; set; }
 
         public List<MemeCoordinates> MemeCoordinates { get; set; }
 

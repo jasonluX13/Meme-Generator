@@ -4,13 +4,22 @@
     ViewBag.Title = "Details";
 }
 
+@section links {
+    <link href="~/Content/Details.css" rel="stylesheet" />
+}
+
 <div>
     <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
     <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
-   
-    <img id="image" data-id=@Model.Id src=@Model.Url style="display:none"/>
-    <canvas id="canvas" ></canvas>
-    
+
+    <img id="image" data-id=@Model.Id src=@Model.Url style="display:none" />
+    <canvas id="canvas"></canvas>
+
+    <div class="voting">
+        <span id="upvote" class="bold">▲</span>
+        <span id="votes">0</span>
+        <span id="downvote" class="bold">▼</span>
+    </div>
 
 </div>
 <p>
@@ -22,7 +31,7 @@
 @Html.ActionLink("Add Comment", "Comment", new { id = Model.Id }) |
 @Html.ActionLink("Back to List", "Index")
 <h4>Comments</h4>
-@if(Model.Comments.Count > 0)
+@if (Model.Comments.Count > 0)
 {
     <table class="table table-hover">
         <tr>
@@ -55,3 +64,4 @@ else
 <hr />
 
 <script src="~/Scripts/details.js"></script>
+<script src="~/Scripts/Voting.js"></script>
