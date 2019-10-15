@@ -70,5 +70,14 @@ namespace MemeGenerator.Data
                 context.SaveChanges();
             }
         }
+
+        public void RemoveRole(UserRole role)
+        {
+            using (var context = new Context())
+            {
+                context.Entry(role).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
     }
 }

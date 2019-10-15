@@ -92,5 +92,50 @@ namespace MemeGenerator.Controllers
             }       
             return View(viewModel);
         }
+
+
+        public ActionResult Remove(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (!CustomUser.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            User user = _userRepo.GetById((int)id);
+            AddMod viewModel = new AddMod()
+            {
+                Username = user.Username,
+                Id = user.Id,
+                Email = user.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Remove(AddMod viewModel)
+        {
+            if (!CustomUser.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            try
+            {
+                User user = _userRepo.GetById(viewModel.Id);
+                UserRole role = user.Roles.Find(r => r.RoleName == "Moderator");
+                _userRepo.RemoveRole(role);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "An error has occurred");
+            }
+            return View(viewModel);
+           
+        }
     }
 }
