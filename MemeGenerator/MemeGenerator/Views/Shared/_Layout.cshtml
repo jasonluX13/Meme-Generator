@@ -29,6 +29,12 @@
                     <li>
                         @Html.ActionLink("Random Meme", "Random", "Meme")
                     </li>
+                    @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator"))
+                    {
+                        <li>
+                            @Html.ActionLink("Moderator", "Index", "Moderator")
+                        </li>
+                    }
                 </ul>
                 <div class="navbar-right">
                     @if (Request.IsAuthenticated)
