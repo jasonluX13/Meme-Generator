@@ -8,12 +8,12 @@ namespace MemeGenerator.Data
 {
     public class Vote
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         [Required]
-        bool UpDown { get; set; } //true = upvote, false = downvote
+        public bool UpDown { get; set; } //true = upvote, false = downvote
         [Required]
-        int UserId { get; set; }
+        public int UserId { get; set; }
         [Required]
-        int MemeId { get; set; }
+        public int MemeId { get; set; }
     }
 }

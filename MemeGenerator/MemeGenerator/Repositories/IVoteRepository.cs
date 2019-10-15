@@ -9,6 +9,6 @@ namespace MemeGenerator.Repositories
     public interface IVoteRepository
     {
         void AddVote(Vote vote);
-        Vote GetUserVoteOnMeme(int memeId);
+        Vote GetUserVoteOnMeme(int memeId, int userId);
     }
 }
