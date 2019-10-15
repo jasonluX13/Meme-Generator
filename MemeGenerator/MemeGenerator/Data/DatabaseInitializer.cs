@@ -16,8 +16,24 @@ namespace MemeGenerator.Data
                 Email = "user@gmail.com",
                 HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
             };
+            User user2 = new User()
+            {
+                Username = "Bob",
+                Email = "bob@gmail.com",
+                HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
+            };
+
+            User user3 = new User()
+            {
+                Username = "Tom",
+                Email = "tom@gmail.com",
+                HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
+            };
+
 
             context.Users.Add(user1);
+            context.Users.Add(user2);
+            context.Users.Add(user3);
             Template template1 = new Template()
             {
                 Title = "Distracted Boyfriend",
