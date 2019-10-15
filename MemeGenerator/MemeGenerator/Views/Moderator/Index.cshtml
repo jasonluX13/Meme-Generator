@@ -1,0 +1,31 @@
+﻿@model List<MemeGenerator.Data.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Moderators</h2>
+
+@Html.ActionLink("Add Moderator", "Add", "Moderator", null, new { @class = "btn btn-primary"})
+
+<table class="table table-responsive">
+    <thead>
+        <th>Username</th>
+        <th>&nbsp</th>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td> @user.Username </td>
+                <td>
+                    @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Admin") && !user.Roles.Exists(r => r.RoleName == "Admin"))
+                    {
+                        @Html.ActionLink("Remove Mod", "Remove", "Moderator", new { id = user.Id }, new { @class = "btn btn-danger"})
+                    }
+                </td>
+
+            </tr>
+        }     
+    </tbody>
+</table>

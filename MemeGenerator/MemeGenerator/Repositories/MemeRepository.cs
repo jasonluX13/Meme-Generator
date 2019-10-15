@@ -72,6 +72,10 @@ namespace MemeGenerator.Data
                     .Include(x => x.MemeCoordinates)
                     .SingleOrDefaultAsync(x => x.Id == id);
 
+                var comments = await context.Comments.Include(x => x.Creator).Where(x => id == x.MemeId).ToListAsync();
+
+                meme.Comments = comments; 
+
                 return new MemeResponse(meme);
             }
         }
@@ -102,6 +106,27 @@ namespace MemeGenerator.Data
                 context.Comments.Add(comment);
                 await context.SaveChangesAsync();
                 return comment;
+            }
+        }
+
+        async public Task<Comment> GetCommentById(int id)
+        {
+            using (var context = new Context())
+            {
+                return await context.Comments
+                    .Include(c => c.Meme)
+                    .Include(c => c.Creator)
+                    .Where(c => c.Id == id)
+                    .SingleOrDefaultAsync();
+            }
+        }
+        async public void RemoveCommentAsync(Comment comment)
+        {
+            using (var context = new Context())
+            {
+                context.Comments.Attach(comment);
+                context.Entry(comment).State = EntityState.Modified;
+                context.SaveChanges();
             }
         }
 

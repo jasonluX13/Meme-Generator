@@ -1,25 +1,17 @@
 ﻿@model MemeGenerator.Data.MemeResponse
 
 @{
-    ViewBag.Title = "Details";
-}
-
-@section links {
-    <link href="~/Content/Details.css" rel="stylesheet" />
+    ViewBag.Title = "Random";
 }
 
 <div>
+    <h1>Random Meme</h1>
     <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
     <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
 
     <img id="image" data-id=@Model.Id src=@Model.Url style="display:none" />
     <canvas id="canvas"></canvas>
 
-    <div class="voting">
-        <span id="upvote" class="bold">▲</span>
-        <span id="votes">0</span>
-        <span id="downvote" class="bold">▼</span>
-    </div>
 
 </div>
 <p>
@@ -33,7 +25,7 @@
 <h4>Comments</h4>
 @if (Model.Comments.Count > 0)
 {
-    <table class="table table-hover">
+    <table class="table">
         <tr>
             <th>
                 Author
@@ -41,17 +33,12 @@
             <th>
                 Comment
             </th>
-            <th></th>
         </tr>
         @foreach (var item in Model.Comments)
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Creator.Username)</td>
                 <td>@Html.DisplayFor(modelItem => item.Text)</td>
-                @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator") && item.Text != "[Removed]")
-                {
-                    <td>@Html.ActionLink("Remove Comment", "Remove", "Meme", new { id = item.Id }, new { @class = "btn btn-warning" })</td>
-                }
             </tr>
 
         }
@@ -64,4 +51,3 @@ else
 <hr />
 
 <script src="~/Scripts/details.js"></script>
-<script src="~/Scripts/Voting.js"></script>

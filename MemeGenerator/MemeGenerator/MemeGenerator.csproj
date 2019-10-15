@@ -177,12 +177,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemeController.cs" />
+    <Compile Include="Controllers\ModeratorController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Data\Comment.cs" />
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\MemeCoordinates.cs" />
     <Compile Include="Data\MemeCoordInfo.cs" />
     <Compile Include="Data\Vote.cs" />
+    <Compile Include="Data\UserRole.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
@@ -205,6 +207,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\VoteRepository.cs" />
+    <Compile Include="Security\CustomIdentity.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="ViewModels\AddMod.cs" />
     <Compile Include="ViewModels\CreateMeme.cs" />
     <Compile Include="ViewModels\CreateTemplate.cs" />
     <Compile Include="ViewModels\LoginView.cs" />
@@ -226,6 +231,12 @@
     <Content Include="Views\Template\Upload.cshtml" />
     <Content Include="Views\Meme\Details.cshtml" />
     <Content Include="Views\Meme\Comment.cshtml" />
+    <Content Include="Views\Meme\Random.cshtml" />
+    <Content Include="Views\Meme\Remove.cshtml" />
+    <Content Include="Views\Moderator\Index.cshtml" />
+    <Content Include="Views\Moderator\Add.cshtml" />
+    <Content Include="Views\Moderator\Select.cshtml" />
+    <Content Include="Views\Moderator\Remove.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

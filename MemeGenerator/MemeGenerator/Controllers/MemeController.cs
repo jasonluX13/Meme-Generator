@@ -67,13 +67,44 @@ namespace MemeGenerator.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Random()
+        async public Task<ActionResult> Random()
         {
             int total = _memeRepo.Count();
             Random r = new Random();
             int offset = r.Next(1, total);
-            return RedirectToAction("Details", new { id = offset });
+            MemeResponse meme = await _memeRepo.GetMemeAsync(offset);
+            //return RedirectToAction("Details", new { id = offset });
+            return View(meme);
         }
 
+        async public Task<ActionResult> Remove(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Comment comment = await _memeRepo.GetCommentById((int)id);
+            if (comment == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(comment);
+        }
+
+        [ValidateAntiForgeryToken, HttpPost]
+        async public Task<ActionResult> Remove(Comment comment)
+        {
+            try
+            {
+                comment.Text = "[Removed]";
+                _memeRepo.RemoveCommentAsync(comment);
+                return RedirectToAction("Details", new { id = comment.MemeId });
+            }
+            catch
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

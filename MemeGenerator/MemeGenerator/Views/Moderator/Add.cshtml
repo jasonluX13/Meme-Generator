@@ -1,0 +1,29 @@
+﻿@model List<MemeGenerator.Data.User>
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Moderator</h2>
+
+<table class="table table-hover">
+    <thead>
+    <th>Username</th>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+
+                <td>
+                    <a href=@Url.Action("Select", "Moderator", new { id = user.Id })>
+                        <div>
+                            @user.Username
+                        </div>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

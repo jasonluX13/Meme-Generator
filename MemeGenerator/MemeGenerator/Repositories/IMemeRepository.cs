@@ -15,7 +15,9 @@ namespace MemeGenerator.Data
         Task<MemeResponse> GetMemeAsync(int id);
         Task<MemeResponse> AddMemeAsync(Meme meme);
         Task<Comment> AddCommentAsync(Comment comment);
+        void RemoveCommentAsync(Comment comment);
         int Count();
+        Task<Comment> GetCommentById(int id);
         int AddMeme(Meme meme);
     }
 }

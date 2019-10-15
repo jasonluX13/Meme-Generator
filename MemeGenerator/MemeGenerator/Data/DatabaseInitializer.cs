@@ -16,8 +16,24 @@ namespace MemeGenerator.Data
                 Email = "user@gmail.com",
                 HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
             };
+            User user2 = new User()
+            {
+                Username = "Bob",
+                Email = "bob@gmail.com",
+                HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
+            };
+
+            User user3 = new User()
+            {
+                Username = "Tom",
+                Email = "tom@gmail.com",
+                HashedPassword = "$2a$12$.Pi4p8i14tFPafiLTHy...idhMN.9NEIKr8y7mM4TpgFYStIEGNae"
+            };
+
 
             context.Users.Add(user1);
+            context.Users.Add(user2);
+            context.Users.Add(user3);
             Template template1 = new Template()
             {
                 Title = "Distracted Boyfriend",
@@ -247,6 +263,24 @@ namespace MemeGenerator.Data
             };
 
             context.Comments.Add(com1);
+            UserRole user1Role = new UserRole()
+            {
+                RoleName = "Moderator",
+                User = user1
+            };
+            UserRole user1Role1 = new UserRole()
+            {
+                RoleName = "Admin",
+                User = user1
+            };
+            UserRole user2Role2 = new UserRole()
+            {
+                RoleName = "Moderator",
+                User = user2
+            };
+            context.UserRoles.Add(user1Role);
+            context.UserRoles.Add(user1Role1);
+            context.UserRoles.Add(user2Role2);
 
             Vote vote1 = new Vote()
             {

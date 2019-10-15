@@ -20,6 +20,7 @@ namespace MemeGenerator.Data
         public DbSet<Coordinates> Coordinates { get; set; }
         public DbSet<MemeCoordinates> MemeCoordinates { get; set; }
         public DbSet<Vote> Votes { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
