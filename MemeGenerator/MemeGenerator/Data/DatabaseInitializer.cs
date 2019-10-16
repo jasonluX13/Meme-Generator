@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,8 @@ namespace MemeGenerator.Data
 {
     public class DatabaseInitializer : DropCreateDatabaseAlways<Context>
     {
+
+ 
         protected override void Seed(Context context)
         {
             User user1 = new User()
@@ -135,35 +138,40 @@ namespace MemeGenerator.Data
             {
                 Title = template1.Title + " Meme",
                 Creator = user1,
-                Url = template1.Url
+                Url = template1.Url,
+                ImageBytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/DefaultMemes/meme1.png"))
                 
             };
             Meme meme2 = new Meme()
             {
                 Title = template2.Title + " Meme",
                 Creator = user1,
-                Url = template2.Url
+                Url = template2.Url,
+                ImageBytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/DefaultMemes/meme2.png"))
 
             };
             Meme meme3 = new Meme()
             {
                 Title = template3.Title + " Meme",
                 Creator = user1,
-                Url = template3.Url
+                Url = template3.Url,
+                ImageBytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/DefaultMemes/meme3.png"))
 
             };
             Meme meme4 = new Meme()
             {
                 Title = template4.Title + " Meme",
                 Creator = user1,
-                Url = template4.Url
+                Url = template4.Url,
+                ImageBytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/DefaultMemes/meme4.png"))
 
             };
             Meme meme5 = new Meme()
             {
                 Title = template5.Title + " Meme",
                 Creator = user1,
-                Url = template5.Url
+                Url = template5.Url,
+                ImageBytes = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/DefaultMemes/meme5.png"))
             };
 
 
