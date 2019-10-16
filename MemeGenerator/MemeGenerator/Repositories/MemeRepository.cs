@@ -49,6 +49,7 @@ namespace MemeGenerator.Data
                 var memes = await context.Memes
                     .Include(x => x.Creator)
                     .Include(x => x.MemeCoordinates)
+                    .Include(x => x.Comments)
                     .Include(x => x.Votes)
                     .ToListAsync();
                 List<MemeResponse> memeresponses = new List<MemeResponse>();
@@ -138,6 +139,27 @@ namespace MemeGenerator.Data
             }
         }
 
+        public void RemoveMeme(Meme meme)
+        {
+            using (var context = new Context())
+            {
+                context.Memes.Attach(meme);
+                context.Memes.Remove(meme);
+                context.SaveChanges();
+            }
+        }
+        public Meme GetMemeById(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Memes
+                    .Include(m => m.MemeCoordinates)
+                    .Include(m => m.Comments)
+                    .Include(m => m.Creator)
+                    .Where(m => m.Id == id)
+                    .SingleOrDefault();
+            }
+        }
         
     }
 }

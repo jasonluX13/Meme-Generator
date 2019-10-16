@@ -12,6 +12,7 @@
     <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
     <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
 
+
     <img id="image" data-id=@Model.Id src=@Model.Url style="display:none" />
     <canvas id="canvas"></canvas>
 
@@ -23,6 +24,10 @@
 
 </div>
 <p>
+    @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator"))
+    {
+        @Html.ActionLink("Remove Meme", "RemoveMeme", "Meme", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
 
@@ -50,7 +55,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Text)</td>
                 @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator") && item.Text != "[Removed]")
                 {
-                    <td>@Html.ActionLink("Remove Comment", "Remove", "Meme", new { id = item.Id }, new { @class = "btn btn-warning" })</td>
+                    <td>@Html.ActionLink("Remove Comment", "RemoveComment", "Meme", new { id = item.Id }, new { @class = "btn btn-warning" })</td>
                 }
             </tr>
 
