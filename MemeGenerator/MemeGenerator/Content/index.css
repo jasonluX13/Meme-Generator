@@ -1,3 +1,16 @@
 ﻿.meme-img {
     width: 300px;
 }
+
+.bold{
+    font-weight:bold;
+    font-size: 40px;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}

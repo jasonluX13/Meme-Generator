@@ -49,5 +49,21 @@ namespace MemeGenerator.Repositories
                 return context.Votes.Where(x => x.MemeId == memeId).ToList();
             }
         }
+
+        public List<Vote> GetAllVotes()
+        {
+            using(var context = new Context())
+            {
+                return context.Votes.ToList();
+            }
+        }
+
+        public List<Vote> GetAllUserVotes(int userId)
+        {
+            using(var context = new Context())
+            {
+                return context.Votes.Where(x => x.UserId == userId).ToList();
+            }
+        }
     }
 }
