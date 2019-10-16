@@ -149,6 +149,11 @@
     <Content Include="Content\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\template.css" />
+    <Content Include="DefaultMemes\meme1.png" />
+    <Content Include="DefaultMemes\meme2.png" />
+    <Content Include="DefaultMemes\meme3.png" />
+    <Content Include="DefaultMemes\meme4.png" />
+    <Content Include="DefaultMemes\meme5.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
