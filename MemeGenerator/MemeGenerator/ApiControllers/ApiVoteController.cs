@@ -20,6 +20,12 @@ namespace MemeGenerator.ApiControllers
             _userRepository = urepository;
         }
 
+        [Route("api/votes/all"), HttpGet]
+        public List<Vote> GetAllVotes()
+        {
+            return _repository.GetAllVotes();
+        }
+
         [Route("api/votes/{memeId}/all"), HttpGet]
         public List<Vote> GetAllVotesOnMeme(int memeId)
         {
@@ -32,6 +38,14 @@ namespace MemeGenerator.ApiControllers
             if (!User.Identity.IsAuthenticated) return null;
             int userId = _userRepository.GetByUsername(User.Identity.Name).Id;
             return _repository.GetUserVoteOnMeme(memeId, userId);
+        }
+
+        [Route("api/votes/self/all"), HttpGet]
+        public List<Vote> GetAllCurrentUserVotes()
+        {
+            if (!User.Identity.IsAuthenticated) return null;
+            int userId = _userRepository.GetByUsername(User.Identity.Name).Id;
+            return _repository.GetAllUserVotes(userId);
         }
 
         [Route("api/votes/{memeId}/add/{updown}"), HttpPut]
