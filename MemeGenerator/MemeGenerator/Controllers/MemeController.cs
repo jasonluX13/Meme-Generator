@@ -85,8 +85,14 @@ namespace MemeGenerator.Controllers
         {
             int total = _memeRepo.Count();
             Random r = new Random();
-            int offset = r.Next(1, total);
-            MemeResponse meme = await _memeRepo.GetMemeAsync(offset);
+            int offset = r.Next(0, total);
+
+            List<MemeResponse> memes = await _memeRepo.GetAllMemesAsync();
+            if (memes.Count == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            MemeResponse meme = memes[offset];
             //return RedirectToAction("Details", new { id = offset });
             return View(meme);
         }
