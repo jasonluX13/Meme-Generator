@@ -26,6 +26,6 @@ namespace MemeGenerator.Data
 
         public List<MemeCoordinates> MemeCoordinates { get; set; }
 
-
+        public byte[] ImageBytes { get; set; }
     }
 }

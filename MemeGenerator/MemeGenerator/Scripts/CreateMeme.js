@@ -8,7 +8,8 @@ canvas.height = width * img.height / img.width;
 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 ctx.font = "20pt Verdana";
 
-const button = document.getElementById('submit');
+const button = document.getElementById('preview');
+const form = document.getElementById('form');
 
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
     var words = text.split(' ');
@@ -45,4 +46,11 @@ button.addEventListener('click', function () {
         wrapText(ctx, t.value, x, y, 100, 20);
     });
 
+});
+
+form.addEventListener('submit', function () {
+    let dataURL = canvas.toDataURL();
+    let hiddenInput = document.getElementById('dataURL');
+    hiddenInput.value = dataURL;
+    
 });
