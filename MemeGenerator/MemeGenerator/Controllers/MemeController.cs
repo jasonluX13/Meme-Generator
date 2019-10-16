@@ -77,7 +77,7 @@ namespace MemeGenerator.Controllers
             return View(meme);
         }
 
-        async public Task<ActionResult> Remove(int? id)
+        async public Task<ActionResult> RemoveComment(int? id)
         {
             if (!id.HasValue)
             {
@@ -92,7 +92,7 @@ namespace MemeGenerator.Controllers
         }
 
         [ValidateAntiForgeryToken, HttpPost]
-        async public Task<ActionResult> Remove(Comment comment)
+        async public Task<ActionResult> RemoveComment(Comment comment)
         {
             try
             {
@@ -106,5 +106,34 @@ namespace MemeGenerator.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        async public Task<ActionResult> RemoveMeme(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            MemeResponse meme = await _memeRepo.GetMemeAsync((int)id);
+            return View(meme);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        async public Task<ActionResult> RemoveMeme(MemeResponse viewModel)
+        {
+            try
+            {
+                Meme meme = _memeRepo.GetMemeById(viewModel.Id);
+                _memeRepo.RemoveMeme(meme);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                
+            }
+            return View(viewModel);
+        }
+
+
     }
 }
