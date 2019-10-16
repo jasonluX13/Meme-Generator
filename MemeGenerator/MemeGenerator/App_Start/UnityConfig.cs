@@ -24,6 +24,7 @@ namespace MemeGenerator
             container.RegisterType<ICoordinateRepository, CoordinateRepository>();
             container.RegisterType<IMemeRepository, MemeRepository>();
             container.RegisterType<IMemeCoordinateRepository, MemeCoordinateRepository>();
+            container.RegisterType<IVoteRepository, VoteRepository>();
 
             DependencyResolver.SetResolver(new Mvc5Resolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new ApiResolver(container);

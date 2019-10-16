@@ -50,6 +50,7 @@ namespace MemeGenerator.Data
                     .Include(x => x.Creator)
                     .Include(x => x.MemeCoordinates)
                     .Include(x => x.Comments)
+                    .Include(x => x.Votes)
                     .ToListAsync();
                 List<MemeResponse> memeresponses = new List<MemeResponse>();
                 foreach (var meme in memes)
@@ -68,6 +69,7 @@ namespace MemeGenerator.Data
                     .Memes
                     .Include(x => x.Comments)
                     .Include(x => x.Creator)
+                    .Include(x => x.Votes)
                     .Include(x => x.MemeCoordinates)
                     .SingleOrDefaultAsync(x => x.Id == id);
 

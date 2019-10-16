@@ -145,6 +145,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Create.css" />
+    <Content Include="Content\Details.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\template.css" />
@@ -161,6 +162,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\template.js" />
+    <Content Include="Scripts\Voting.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Templates.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
@@ -168,6 +170,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\ApiMemeController.cs" />
     <Compile Include="ApiControllers\ApiTemplateController.cs" />
+    <Compile Include="ApiControllers\ApiVoteController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -180,6 +183,7 @@
     <Compile Include="Data\Context.cs" />
     <Compile Include="Data\MemeCoordinates.cs" />
     <Compile Include="Data\MemeCoordInfo.cs" />
+    <Compile Include="Data\Vote.cs" />
     <Compile Include="Data\UserRole.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
@@ -190,6 +194,7 @@
     <Compile Include="Repositories\ITemplateRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Data\Meme.cs" />
+    <Compile Include="Repositories\IVoteRepository.cs" />
     <Compile Include="Repositories\MemeCoordinateRepository.cs" />
     <Compile Include="Repositories\MemeRepository.cs" />
     <Compile Include="Data\MemeResponse.cs" />
@@ -201,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\VoteRepository.cs" />
     <Compile Include="Security\CustomIdentity.cs" />
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="ViewModels\AddMod.cs" />
