@@ -13,7 +13,10 @@
     
 </div>
 <p>
-    @Html.ActionLink("Remove Meme", "RemoveMeme", "Meme", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    @if (Request.IsAuthenticated && ((MemeGenerator.Security.CustomPrincipal)User).IsInRole("Moderator"))
+    {
+        @Html.ActionLink("Remove Meme", "RemoveMeme", "Meme", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
 

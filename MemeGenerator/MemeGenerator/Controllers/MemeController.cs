@@ -1,4 +1,5 @@
 ﻿using MemeGenerator.Data;
+using MemeGenerator.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,15 @@ namespace MemeGenerator.Controllers
     {
         private IMemeRepository _memeRepo;
         private IUserRepository _userRepo;
+        public CustomPrincipal CustomUser
+        {
+            get
+            {
+                return (CustomPrincipal)User;
+            }
+        }
+
+
         public MemeController(IMemeRepository memeRepo, IUserRepository userRepo)
         {
             _memeRepo = memeRepo;
@@ -34,6 +44,10 @@ namespace MemeGenerator.Controllers
                 return RedirectToAction("Index", "Home");
             }
             MemeResponse meme  = await _memeRepo.GetMemeAsync((int)id);
+            if (meme == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(meme);
         }
 
@@ -83,6 +97,11 @@ namespace MemeGenerator.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (!CustomUser.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             Comment comment = await _memeRepo.GetCommentById((int)id);
             if (comment == null)
             {
@@ -94,6 +113,10 @@ namespace MemeGenerator.Controllers
         [ValidateAntiForgeryToken, HttpPost]
         async public Task<ActionResult> RemoveComment(Comment comment)
         {
+            if (!CustomUser.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             try
             {
                 comment.Text = "[Removed]";
@@ -113,6 +136,10 @@ namespace MemeGenerator.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            if (!CustomUser.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             MemeResponse meme = await _memeRepo.GetMemeAsync((int)id);
             return View(meme);
         }
@@ -121,6 +148,10 @@ namespace MemeGenerator.Controllers
         [ValidateAntiForgeryToken]
         async public Task<ActionResult> RemoveMeme(MemeResponse viewModel)
         {
+            if (!CustomUser.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             try
             {
                 Meme meme = _memeRepo.GetMemeById(viewModel.Id);
