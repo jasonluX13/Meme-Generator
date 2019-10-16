@@ -12,9 +12,16 @@
     <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
     <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
 
+    @if (Model.ImageBytes != null)
+    {
+        <img id="image" data-id=@Model.Id src="data:image;base64,@System.Convert.ToBase64String(Model.ImageBytes)" />
+    }
+    else
+    {
+        <img id="image" data-id=@Model.Id src=@Model.Url style="display:none "/>
+        <canvas id="canvas"></canvas>
+    }
 
-    <img id="image" data-id=@Model.Id src=@Model.Url style="display:none" />
-    <canvas id="canvas"></canvas>
 
     <div class="voting">
         <span id="upvote" class="bold">▲</span>
@@ -68,5 +75,8 @@ else
 }
 <hr />
 
-<script src="~/Scripts/details.js"></script>
+@if (Model.ImageBytes == null)
+{
+    <script src="~/Scripts/details.js"></script>
+}
 <script src="~/Scripts/Voting.js"></script>

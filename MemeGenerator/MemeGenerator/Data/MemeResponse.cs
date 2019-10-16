@@ -15,7 +15,9 @@ namespace MemeGenerator.Data
         public string CreatorUsername { get; set; }
         public List<Comment> Comments { get; set; }
         public List<MemeCoordInfo> MemeCoordinates { get; set; }
-         
+        
+        public byte[] ImageBytes { get; set; } 
+
         public MemeResponse()
         {
 
@@ -29,6 +31,7 @@ namespace MemeGenerator.Data
             Comments = meme.Comments;
             MemeCoordinates = meme.MemeCoordinates.Select(m => new MemeCoordInfo { Id = m.Id, Text = m.Text, X = m.X, Y=m.Y}).ToList();
             CreatorUsername = meme.Creator.Username;
+            ImageBytes = meme.ImageBytes;
         }
     }
 }

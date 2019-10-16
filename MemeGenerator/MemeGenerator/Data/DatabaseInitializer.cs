@@ -288,7 +288,7 @@ namespace MemeGenerator.Data
                 UserId = 1,
                 UpDown = true
             };
-
+        
             context.Votes.Add(vote1);
 
             context.SaveChanges();
