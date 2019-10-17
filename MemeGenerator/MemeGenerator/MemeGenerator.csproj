@@ -236,7 +236,6 @@
     <Content Include="Views\Template\Create.cshtml" />
     <Content Include="Views\Template\Upload.cshtml" />
     <Content Include="Views\Meme\Details.cshtml" />
-    <Content Include="Views\Meme\Comment.cshtml" />
     <Content Include="Views\Meme\Random.cshtml" />
     <Content Include="Views\Meme\RemoveComment.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
