@@ -4,10 +4,14 @@
     ViewBag.Title = "Details";
 }
 
+@section links {
+    <link href="~/Content/Details.css" rel="stylesheet" />
+}
+
 <div>
     <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title) </h3>
     <p>Submitted by: @Html.DisplayFor(model => model.CreatorUsername)</p>
-    
+
     @if (Model.ImageBytes != null)
     {
         <img id="image" data-id=@Model.Id src=@Url.Action("RenderImage", "Home", new { id = Model.Id }) />
@@ -17,6 +21,13 @@
         <img id="image" data-id=@Model.Id src=@Model.Url style="display:none " />
         <canvas id="canvas"></canvas>
     }
+
+
+    <div class="voting">
+        <span id="upvote" class="bold">▲</span>
+        <span id="votes">0</span>
+        <span id="downvote" class="bold">▼</span>
+    </div>
 
 </div>
 <p>
@@ -29,9 +40,8 @@
 
 <hr />
 
-@Html.ActionLink("Add Comment", "Comment", new { id = Model.Id }) |
-@Html.ActionLink("Back to List", "Index")
 <h4>Comments</h4>
+@Html.ActionLink("Add Comment", "Details", "Meme", new { id = Model.Id }, new { @class = "btn btn-primary"})
 @if (Model.Comments.Count > 0)
 {
     <table class="table table-hover">
@@ -64,7 +74,11 @@ else
 }
 <hr />
 
-@if (Model.ImageBytes == null)
-{
-    <script src="~/Scripts/details.js"></script>
-}
+
+<script>
+        const isAuthenticated = @Request.IsAuthenticated.ToString().ToLower();
+</script>
+<script src="~/Scripts/details.js"></script>
+<script src="~/Scripts/Voting.js"></script>
+
+
