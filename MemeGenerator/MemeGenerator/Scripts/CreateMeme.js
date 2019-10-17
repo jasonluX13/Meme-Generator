@@ -1,6 +1,7 @@
 ﻿const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
 const image = document.getElementById('template');
+let draw = false;
 const width = 400;
 canvas.width = width;
 canvas.crossOrigin = "Anonymous";
@@ -65,6 +66,85 @@ img.onload = function () {
         hiddenInput.value = dataURL;
 
     });
+
+    //canvas.addEventListener('mousedown', function (e) {
+    //    draw = true;
+      
+    //});
+
+    //canvas.addEventListener('mouseup', function () {
+    //    draw = false;
+    //});
+
+    //canvas.addEventListener('mousemove', function (e) {
+    //    console.log(draw);
+    //    if (draw === true) {
+
+    //        let x = e.pageX - this.offsetLeft;
+    //        let y = e.pageY - this.offsetTop;
+    //        ctx.fillRect(x, y, 10, 10);
+    //        console.log(x, y);
+    //    }
+    //})
+
+    var mouse = { x: 0, y: 0 };
+    var touch = { x: 0, y: 0 };
+    canvas.addEventListener('mousemove', function (e) {
+        mouse.x = e.pageX - this.offsetLeft;
+        mouse.y = e.pageY - this.offsetTop;
+    }, false);
+
+    
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#00CC99';
+
+    canvas.addEventListener('mousedown', function (e) {
+        ctx.strokeStyle = document.getElementById('brush-color').value;
+        ctx.lineWidth = document.getElementById('brush-size').value;
+
+        ctx.beginPath();
+        ctx.moveTo(mouse.x, mouse.y);
+
+        canvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+
+    canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onPaint, false);
+    }, false);
+
+    var onPaint = function () {
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.stroke();
+    };
+
+    canvas.addEventListener('touchstart', function (e) {
+        ctx.strokeStyle = document.getElementById('brush-color').value;
+        ctx.lineWidth = document.getElementById('brush-size').value;
+
+        ctx.beginPath();
+        //ctx.moveTo(touch.x, touch.y);
+
+        canvas.addEventListener('touchmove', onPaintTouch, false);
+    }, false);
+
+    canvas.addEventListener('touchend', function () {
+        canvas.removeEventListener('touchmove', onPaintTouch, false);
+        console.log("touchend");
+    }, false);
+
+    canvas.addEventListener('touchmove', function (e) {
+        var touches = e.touches[0];
+        touch.x = touches.clientX - this.offsetLeft;
+        touch.y = touches.clientY - this.offsetTop;
+    }, false);
+
+    var onPaintTouch = function () {
+        ctx.lineTo(touch.x, touch.y);
+        ctx.stroke();
+    };
+
 };
 
 
