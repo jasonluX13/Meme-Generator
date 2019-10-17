@@ -11,7 +11,9 @@ img.src = image.src;
 img.onload = function () {
     canvas.height = width * img.height / img.width;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    ctx.font = "20pt Verdana";
+    //ctx.font = "20pt Verdana";
+ 
+    // ctx.font.fontcolor = 
 
     const button = document.getElementById('preview');
     const form = document.getElementById('form');
@@ -42,13 +44,17 @@ img.onload = function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         //refill text
-        ctx.fillStyle = "black";
+        let size = document.getElementById('size').value;
+        ctx.font = size + "pt Verdana";
+        size = parseInt(size, 10);
+        console.log(document.getElementById('size').value);
+        ctx.fillStyle = document.getElementById('color').value;
         textboxes.forEach(t => {
             let x = parseInt(t.getAttribute('data-X'), 10);
             let y = parseInt(t.getAttribute('data-Y'), 10);
             console.log(t.value, x, y);
             //ctx.fillText(t.value, x, y);
-            wrapText(ctx, t.value, x, y, 100, 20);
+            wrapText(ctx, t.value, x, y, 100, size);
         });
 
     });
