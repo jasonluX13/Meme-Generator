@@ -27,6 +27,7 @@
             console.log(memeId);
             await fetch("http://localhost:53520/api/votes/"+memeId+"/add/true", {method: 'PUT'});
             updateVotes(memeId);
+
             getCurrentUserVotes();
         }
         else if(event.target.id == "downvote"){
@@ -89,6 +90,7 @@
     async function getCurrentUserVotes(){
         var response = await fetch("http://localhost:53520/api/votes/self/all");
         var userVotes = await response.json();
+
 
         var scoreDisplayElements = document.getElementsByClassName("bold");
 
