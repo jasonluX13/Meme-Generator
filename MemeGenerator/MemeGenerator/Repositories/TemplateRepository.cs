@@ -38,5 +38,15 @@ namespace MemeGenerator.Data
                 return template.Id;
             }
         }
+
+        public void Remove(Template template)
+        {
+            using (var context = new Context())
+            {
+                context.Templates.Attach(template);
+                context.Entry(template).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
     }
 }
