@@ -14,6 +14,7 @@ namespace MemeGenerator.Data
             {
                 return context.Templates
                     .Include(t => t.Coordinates)
+                    .OrderByDescending(t => t.Id)
                     .ToList();
             }
         }

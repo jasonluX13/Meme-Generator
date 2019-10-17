@@ -14,7 +14,7 @@
         <img id="template" crossorigin="anonymous" style="display: none" class="meme-img" src=@Model.Url />
     </div>
     <div>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" style="touch-action: none"></canvas>
     </div>
     <div>
      
@@ -30,9 +30,45 @@
             </div>
             foreach (var coord in Model.Coordinates)
             {
-                <input class="textbox" name="textData" type="text" data-X=@coord.X data-Y=@coord.Y />
+                <label>Text: </label>
+                <input class="textbox form-control" name="textData" type="text" data-X=@coord.X data-Y=@coord.Y />
             }
             <input id="dataURL" name="dataURL" hidden="hidden" />
+
+            <label>Text Color: </label>
+            <select id="color" class="form-control">
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+            </select>
+            <label>Text Size: </label>
+            <select id="size" class="form-control">
+                <option value="12">12</option>
+                <option value="16">16</option>
+                <option value="20" selected="selected">20</option>
+                <option value="24">24</option>
+                <option value="28">28</option>
+            </select>
+
+            <label>Brush Color:</label>
+            <select id="brush-color" class="form-control">
+                <option value="black">Black</option>
+                <option value="white">White</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="pink">Pink</option>
+            </select>
+
+            <label>Brush Size: </label>
+            <select id="brush-size" class="form-control">
+                <option value="3">3</option>
+                <option value="6" selected="selected">6</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="25">25</option>
+            </select>
+
             <button id="preview" class="btn btn-primary" type="button">Preview</button>
             <button class="btn btn-success" type="submit" >Share</button>
         }
@@ -41,6 +77,3 @@
 
 <script src="~/Scripts/createMeme.js"></script>
 
-@*@Html.BeginForm("Create", "Home", FormMethod.Post){ 
-    
-}*@

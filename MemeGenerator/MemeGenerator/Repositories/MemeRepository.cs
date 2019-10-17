@@ -13,7 +13,9 @@ namespace MemeGenerator.Data
         {
             using (var context = new Context())
             {
-                return await context.Templates.ToListAsync();
+                return await context.Templates
+                    .OrderByDescending(t => t.Id)
+                    .ToListAsync();
             }
         }
 
@@ -51,6 +53,7 @@ namespace MemeGenerator.Data
                     .Include(x => x.MemeCoordinates)
                     .Include(x => x.Comments)
                     .Include(x => x.Votes)
+                    .OrderByDescending(x => x.Id)
                     .ToListAsync();
                 List<MemeResponse> memeresponses = new List<MemeResponse>();
                 foreach (var meme in memes)
