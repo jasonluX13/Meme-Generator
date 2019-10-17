@@ -149,6 +149,11 @@
     <Content Include="Content\index.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\template.css" />
+    <Content Include="DefaultMemes\meme1.png" />
+    <Content Include="DefaultMemes\meme2.png" />
+    <Content Include="DefaultMemes\meme3.png" />
+    <Content Include="DefaultMemes\meme4.png" />
+    <Content Include="DefaultMemes\meme5.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -233,11 +238,12 @@
     <Content Include="Views\Meme\Details.cshtml" />
     <Content Include="Views\Meme\Comment.cshtml" />
     <Content Include="Views\Meme\Random.cshtml" />
-    <Content Include="Views\Meme\Remove.cshtml" />
+    <Content Include="Views\Meme\RemoveComment.cshtml" />
     <Content Include="Views\Moderator\Index.cshtml" />
     <Content Include="Views\Moderator\Add.cshtml" />
     <Content Include="Views\Moderator\Select.cshtml" />
     <Content Include="Views\Moderator\Remove.cshtml" />
+    <Content Include="Views\Meme\RemoveMeme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

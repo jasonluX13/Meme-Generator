@@ -51,11 +51,11 @@ namespace MemeGenerator.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Template template, string[] textData)
+        public ActionResult Create(Template template, string[] textData, string dataURL)
         {
-
             int templateId = template.Id;
             string title = template.Title;
+            byte[] bytes = Convert.FromBase64String(dataURL.Split(',')[1]);
 
             try
             {
@@ -68,7 +68,7 @@ namespace MemeGenerator.Controllers
                     Title = title,
                     Url = template.Url,
                     CreatorId = currentUser.Id,
-
+                    ImageBytes = bytes
                 };
                 int memeId = _memeRepo.AddMeme(meme);
                 for (int i = 0; i < template.Coordinates.Count; i++)

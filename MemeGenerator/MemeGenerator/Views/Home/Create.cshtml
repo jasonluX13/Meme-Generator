@@ -11,14 +11,14 @@
 <h2>@Model.Title</h2>
 <div>
     <div>
-        <img id="template" style="display: none" class="meme-img" src=@Model.Url />
+        <img id="template" crossorigin="anonymous" style="display: none" class="meme-img" src=@Model.Url />
     </div>
     <div>
         <canvas id="canvas"></canvas>
     </div>
     <div>
 
-        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "form" }))
         {
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.Coordinates)
@@ -33,8 +33,8 @@
             {
                 <input class="textbox" name="textData" type="text" data-X=@coord.X data-Y=@coord.Y />
             }
-            
-            <button id="submit" class="btn btn-primary" type="button">Preview</button>
+            <input id="dataURL" name="dataURL" hidden="hidden" />
+            <button id="preview" class="btn btn-primary" type="button">Preview</button>
             <button class="btn btn-success" type="submit" >Share</button>
         }
     </div>

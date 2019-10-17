@@ -40,6 +40,7 @@ namespace MemeGenerator.ApiControllers
             return _repository.GetUserVoteOnMeme(memeId, userId);
         }
 
+
         [Authorize]
         [Route("api/votes/self/all"), HttpGet]
         public List<Vote> GetAllCurrentUserVotes()
@@ -48,6 +49,7 @@ namespace MemeGenerator.ApiControllers
             int userId = _userRepository.GetByUsername(User.Identity.Name).Id;
             return _repository.GetAllUserVotes(userId);
         }
+
 
         [Authorize]
         [Route("api/votes/{memeId}/add/{updown}"), HttpPut]

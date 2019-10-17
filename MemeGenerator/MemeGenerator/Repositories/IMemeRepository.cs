@@ -19,5 +19,7 @@ namespace MemeGenerator.Data
         int Count();
         Task<Comment> GetCommentById(int id);
         int AddMeme(Meme meme);
+        void RemoveMeme(Meme meme);
+        Meme GetMemeById(int id);
     }
 }
