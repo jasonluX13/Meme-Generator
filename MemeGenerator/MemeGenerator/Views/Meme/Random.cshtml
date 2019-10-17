@@ -10,7 +10,7 @@
     
     @if (Model.ImageBytes != null)
     {
-        <img id="image" data-id=@Model.Id src="data:image;base64,@System.Convert.ToBase64String(Model.ImageBytes)" />
+        <img id="image" data-id=@Model.Id src=@Url.Action("RenderImage", "Home", new { id = Model.Id }) />
     }
     else
     {
