@@ -7,13 +7,13 @@
     async function voteup(){
         await fetch("http://localhost:53520/api/votes/"+memeId+"/add/true", {method: 'PUT'});
         getvotes();
-        makeGreen();
+        setUserVoteColor();
     }
 
     async function votedown(){
         await fetch("http://localhost:53520/api/votes/"+memeId+"/add/false", {method: 'PUT'});
         getvotes();
-        makeRed();
+        setUserVoteColor();
     }
 
     async function getvotes(){
@@ -39,12 +39,18 @@
         downvote.className = "bold";
     }
 
+    function clearColor(){
+        upvote.className = "bold";
+        votecount.className = "bold";
+        downvote.className = "bold";
+    }
+
     async function setUserVoteColor(){
         var response = await fetch("http://localhost:53520/api/votes/"+ memeId);
         var vote = await response.json();
         console.log(vote);
-        if(vote === null) return;
-        if(vote.UpDown) makeGreen();
+        if(vote === null) clearColor();
+        else if(vote.UpDown) makeGreen();
         else makeRed();
     }
 

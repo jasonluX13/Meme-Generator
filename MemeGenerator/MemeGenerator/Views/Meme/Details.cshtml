@@ -40,8 +40,10 @@
 
 <hr />
 
-@Html.ActionLink("Add Comment", "Comment", new { id = Model.Id }) |
-@Html.ActionLink("Back to List", "Index")
+<div id="commentArea">
+    
+</div>
+
 <h4>Comments</h4>
 @if (Model.Comments.Count > 0)
 {
@@ -75,8 +77,12 @@ else
 }
 <hr />
 
-@if (Model.ImageBytes == null)
-{
-    <script src="~/Scripts/details.js"></script>
-}
+
+<script>
+        const isAuthenticated = @Request.IsAuthenticated.ToString().ToLower();
+</script>
+<script src="~/Scripts/details.js"></script>
 <script src="~/Scripts/Voting.js"></script>
+<script src="~/Scripts/Comment.js"></script>
+
+

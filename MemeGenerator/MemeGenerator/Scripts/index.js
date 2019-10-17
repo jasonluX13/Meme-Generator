@@ -27,14 +27,15 @@
             console.log(memeId);
             await fetch("http://localhost:53520/api/votes/"+memeId+"/add/true", {method: 'PUT'});
             updateVotes(memeId);
-            makeGreen(memeId);
+
+            getCurrentUserVotes();
         }
         else if(event.target.id == "downvote"){
             let memeId = event.target.dataset.downvoteid;
             console.log(memeId);
             await fetch("http://localhost:53520/api/votes/"+memeId+"/add/false", {method: 'PUT'});
             updateVotes(memeId);
-            makeRed(memeId);
+            getCurrentUserVotes();
         }
     }
 
@@ -89,6 +90,13 @@
     async function getCurrentUserVotes(){
         var response = await fetch("http://localhost:53520/api/votes/self/all");
         var userVotes = await response.json();
+
+
+        var scoreDisplayElements = document.getElementsByClassName("bold");
+
+        for(var c=0;c<scoreDisplayElements.length;c++){
+            scoreDisplayElements[c].classList ="bold votecount";
+        }
 
         for(var i=0;i<userVotes.length;i++){
             if(userVotes[i].UpDown) makeGreen(userVotes[i].MemeId);

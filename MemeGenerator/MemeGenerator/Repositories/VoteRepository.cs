@@ -17,7 +17,14 @@ namespace MemeGenerator.Repositories
                 Vote oldVote = GetUserVoteOnMeme(vote.MemeId, vote.UserId);
                 if(oldVote != null)
                 {
-                    if (oldVote.UpDown == vote.UpDown) return;
+                    if (oldVote.UpDown == vote.UpDown)
+                    {
+                        Vote votetodelete = new Vote()
+                        {
+                            Id = oldVote.Id
+                        };
+                        context.Entry(votetodelete).State = System.Data.Entity.EntityState.Deleted;
+                    }
                     else
                     {
                         Vote votetodelete = new Vote()
