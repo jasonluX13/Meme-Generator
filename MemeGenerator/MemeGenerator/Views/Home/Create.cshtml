@@ -17,13 +17,12 @@
         <canvas id="canvas"></canvas>
     </div>
     <div>
-
+     
         @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { id = "form" }))
         {
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.Coordinates)
             @Html.HiddenFor(model => model.Url)
-            @Html.HiddenFor(model => model.Id)
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = Model.Title } })

@@ -243,6 +243,7 @@
     <Content Include="Views\Moderator\Select.cshtml" />
     <Content Include="Views\Moderator\Remove.cshtml" />
     <Content Include="Views\Meme\RemoveMeme.cshtml" />
+    <Content Include="Views\Template\Remove.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

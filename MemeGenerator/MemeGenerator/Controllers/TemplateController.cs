@@ -1,4 +1,5 @@
 ﻿using MemeGenerator.Data;
+using MemeGenerator.Security;
 using MemeGenerator.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,13 @@ namespace MemeGenerator.Controllers
         private ITemplateRepository _templateRepo;
         private ICoordinateRepository _coordRepo;
 
+        public CustomPrincipal CustomUser
+        {
+            get
+            {
+                return (CustomPrincipal)User;
+            }
+        }
         public TemplateController(ITemplateRepository templateRepo, ICoordinateRepository coordRepo)
         {
             _templateRepo = templateRepo;
@@ -27,11 +35,6 @@ namespace MemeGenerator.Controllers
             return RedirectToAction("Templates", "Home");
         }
 
-        //Create a new template
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
 
         public ActionResult Create(CreateTemplate viewModel)
         {
@@ -87,5 +90,21 @@ namespace MemeGenerator.Controllers
             }
             return RedirectToAction("Create", new CreateTemplate() { Url = serverPath });
         }
+
+        public ActionResult Remove(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (!CustomUser.IsInRole("Moderator"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Template template = _templateRepo.GetById((int)id);
+            return View(template);
+        }
+
+      
     }
 }

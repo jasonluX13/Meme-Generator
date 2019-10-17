@@ -32,7 +32,7 @@ function getCursorPosition(event) {
     const y = event.clientY - rect.top
     ctx.font = "20pt Verdana";
     ctx.fillText("text", x, y);
-    textboxlist.innerHTML += '<input type="text" name="coords" value="'+x+','+y +'" />'
+    textboxlist.innerHTML += '<input type="text" hidden="hidden" name="coords" value="'+x+','+y +'" />'
     console.log("x: " + x + " y: " + y)
     document.getElementById('submit').disabled = false;
     document.getElementById('addTextboxes').style.display = 'none';
