@@ -3,6 +3,7 @@ using MemeGenerator.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -92,5 +93,12 @@ namespace MemeGenerator.Controllers
             return RedirectToAction("Create", new { id = templateId });
         }
 
+        [AllowAnonymous]
+        async public Task<ActionResult> RenderImage(int id)
+        {
+            MemeResponse meme = await _memeRepo.GetMemeAsync(id);
+            byte[] image = meme.ImageBytes;
+            return File(image, "image/png");
+        }
     }
 }
