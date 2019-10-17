@@ -5,7 +5,9 @@ const width = 400;
 canvas.width = width;
 canvas.crossOrigin = "Anonymous";
 let img = new Image();
+img.crossOrigin = "Anonymous";
 img.src = image.src;
+
 img.onload = function () {
     canvas.height = width * img.height / img.width;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
