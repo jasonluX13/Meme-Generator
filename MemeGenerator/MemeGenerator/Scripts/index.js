@@ -1,6 +1,6 @@
 ﻿(async ()=> {
     async function getMemes(){
-        return await fetch('http://localhost:53520/api/memes/all');
+        return await fetch('http://wos-meme-generator.azurewebsites.net/api/memes/all');
     }
 
     let response = await getMemes();
@@ -21,7 +21,7 @@
         if(event.target.id == "upvote"){
             let memeId = event.target.dataset.upvoteid;
             console.log(memeId);
-            await fetch("http://localhost:53520/api/votes/"+memeId+"/add/true", {method: 'PUT'});
+            await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/add/true", {method: 'PUT'});
             updateVotes(memeId);
 
             getCurrentUserVotes();
@@ -29,7 +29,7 @@
         else if(event.target.id == "downvote"){
             let memeId = event.target.dataset.downvoteid;
             console.log(memeId);
-            await fetch("http://localhost:53520/api/votes/"+memeId+"/add/false", {method: 'PUT'});
+            await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/add/false", {method: 'PUT'});
             updateVotes(memeId);
             getCurrentUserVotes();
         }
@@ -58,7 +58,7 @@
 
 
     async function updateAllVotes(){
-        var response = await fetch("http://localhost:53520/api/votes/all");
+        var response = await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/all");
         var votes = await response.json();
         for(var i=0;i<votes.length;i++){
             console.log('li[data-id="'+ votes[i].MemeId +'"]');
@@ -72,7 +72,7 @@
     }
 
     async function updateVotes(memeId){
-        var response = await fetch("http://localhost:53520/api/votes/"+memeId+"/all");
+        var response = await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/all");
         var votes = await response.json();
         var scoreField = document.querySelector('[data-voteid="'+ memeId +'"]');
         var score = 0;
@@ -84,7 +84,7 @@
     }
 
     async function getCurrentUserVotes(){
-        var response = await fetch("http://localhost:53520/api/votes/self/all");
+        var response = await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/self/all");
         var userVotes = await response.json();
 
 

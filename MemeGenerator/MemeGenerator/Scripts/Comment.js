@@ -7,7 +7,7 @@
         var commenttext = commentbox.value;
         var url = window.location.href;
         var memeId = url.split("/")[5];
-        await fetch("http://localhost:53520/api/memes/meme/"+memeId+"/"+commenttext, {method: 'PATCH'});
+        await fetch("http://wos-meme-generator.azurewebsites.net/api/memes/meme/"+memeId+"/"+commenttext, {method: 'PATCH'});
         window.location.href = url;
     }
 

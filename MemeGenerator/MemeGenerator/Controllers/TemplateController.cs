@@ -86,7 +86,7 @@ namespace MemeGenerator.Controllers
                 var fileName = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/Templates"), fileName);
                 file.SaveAs(path);
-                serverPath = $"http://localhost:53520/Templates/{fileName}";
+                serverPath = $"http://wos-meme-generator.azurewebsites.net/Templates/{fileName}";
             }
             return RedirectToAction("Create", new CreateTemplate() { Url = serverPath });
         }

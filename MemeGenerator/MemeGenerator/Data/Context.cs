@@ -11,7 +11,7 @@ namespace MemeGenerator.Data
     {
         public Context() : base("name=MemeGeneratorConnection")
         {
-            Database.SetInitializer<Context>(new DatabaseInitializer());
+            //Database.SetInitializer<Context>(new DatabaseInitializer());
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }

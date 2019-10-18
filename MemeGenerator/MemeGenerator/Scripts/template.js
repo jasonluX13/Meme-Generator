@@ -1,6 +1,6 @@
 ﻿(async ()=> {
     function getMemes(){
-        return fetch('http://localhost:53520/api/templates/all');
+        return fetch('http://wos-meme-generator.azurewebsites.net/api/templates/all');
     }
 
     let response = await getMemes();

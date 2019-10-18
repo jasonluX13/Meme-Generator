@@ -5,19 +5,19 @@
     var votecount = document.getElementById("votes");
     var memeId = window.location.href.split("/")[5];
     async function voteup(){
-        await fetch("http://localhost:53520/api/votes/"+memeId+"/add/true", {method: 'PUT'});
+        await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/add/true", {method: 'PUT'});
         getvotes();
         setUserVoteColor();
     }
 
     async function votedown(){
-        await fetch("http://localhost:53520/api/votes/"+memeId+"/add/false", {method: 'PUT'});
+        await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/add/false", {method: 'PUT'});
         getvotes();
         setUserVoteColor();
     }
 
     async function getvotes(){
-        var response = await fetch("http://localhost:53520/api/votes/"+memeId+"/all");
+        var response = await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+memeId+"/all");
         var votes = await response.json();
         var score = 0;
         for(var i=0; i<votes.length;i++){
@@ -46,7 +46,7 @@
     }
 
     async function setUserVoteColor(){
-        var response = await fetch("http://localhost:53520/api/votes/"+ memeId);
+        var response = await fetch("http://wos-meme-generator.azurewebsites.net/api/votes/"+ memeId);
         var vote = await response.json();
         console.log(vote);
         if(vote === null) clearColor();

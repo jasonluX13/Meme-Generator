@@ -158,6 +158,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\wos-meme-generator - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wos-meme-generator - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Comment.js" />
     <Content Include="Scripts\createMeme.js" />
@@ -191,6 +193,11 @@
     <Compile Include="Data\MemeCoordInfo.cs" />
     <Compile Include="Data\Vote.cs" />
     <Compile Include="Data\UserRole.cs" />
+    <Compile Include="Migrations\201910180509067_Initial.cs" />
+    <Compile Include="Migrations\201910180509067_Initial.Designer.cs">
+      <DependentUpon>201910180509067_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\CoordinateRepository.cs" />
     <Compile Include="Data\Coordinates.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
@@ -255,6 +262,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910180509067_Initial.resx">
+      <DependentUpon>201910180509067_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -36,7 +36,7 @@
 
     
 
-    let url = "http://localhost:53520/api/memes/meme/" + image.getAttribute('data-id');
+    let url = "http://wos-meme-generator.azurewebsites.net/api/memes/meme/" + image.getAttribute('data-id');
     console.log(url);
 
     let response = await fetch(url, {
