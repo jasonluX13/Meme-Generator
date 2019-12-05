@@ -26,14 +26,6 @@ Create a website that allows users to create memes and share them with others.
 - Coordinates
 - CompletedMemes
 
-## Team member roles and responsibilities
-### Jason 
-- Create basic webpage layout
-- Set up login and authentication
-
-### Adam
-- Database setup
-
 
 ## Initial set of issues/tasks
 - Look up API's that may help https://api.imgflip.com/
